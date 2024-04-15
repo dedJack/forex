@@ -2,7 +2,10 @@ const express = require("express");
 const User = require("../models/User");
 const { body, validationResult } = require('express-validator');
 const router = express.Router();
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
+const jwt_Secret = 'helloIamGoodboy';
 router.post("/createUser",[
       body('name', 'name must be 3 characters').isLength({ min: 3}),
       body('email', 'email must be valid').isEmail(),
@@ -10,7 +13,7 @@ router.post("/createUser",[
   ],async(req, res) => {
     const errors = validationResult(req);
 
-    //checks If error is found then return error with bad message request.
+    //checks If error is found, then return error with bad message request.
     
       if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -23,12 +26,21 @@ router.post("/createUser",[
           return res.status(400).json({error : "Email already exist..."});
         }
         //If email doesnt exist int he database then it first create a user and then move ahead.
+        salt = await bcrypt.genSalt(10)
+        secPassword = await bcrypt.hash(req.body.password, salt)
         user = await User.create({
             name: req.body.name,
             email: req.body.email,
-            password: req.body.password,
-          })
-          res.json(user);
+            password: secPassword,
+          });
+          const data ={
+            user : {
+              id : user.id
+            }
+          }
+          const authToken = jwt.sign(data ,jwt_Secret);
+          res.json(authToken);
+          // res.json(user);
     }
     catch(error){
         console.error(error.message);
