@@ -71,8 +71,8 @@ router.post("/loginUser",[
       return res.status(400).json({error : "Email doesn't exist..."});
     }
     //check if the compared password is right or not.
-    const compasrePassword = await bcrypt.compare(password, user.password);
-    if(!compasrePassword){
+    const comparePassword = await bcrypt.compare(password, user.password);
+    if(!comparePassword){
       return res.status(400).json({error : "Incorrect password.."});
     }
     const data ={
