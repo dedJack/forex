@@ -4,10 +4,10 @@ const { body, validationResult } = require('express-validator');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-
+const fetchuser = require('../middleware/fetchuser');
 const jwt_Secret = 'helloIamGoodboy';
 
-//To create a user Using POST: 6000/api/auth/createUser
+//Route 1 : To create a user Using POST: 6000/api/auth/createUser
 router.post("/createUser",[
       body('name', 'name must be 3 characters').isLength({ min: 3}),
       body('email', 'email must be valid').isEmail(),
@@ -50,7 +50,7 @@ router.post("/createUser",[
       
 });
 
-// to login using POST: 6000/api/auth/loginUser
+// Route 2 : to login using POST: 6000/api/auth/loginUser
 
 router.post("/loginUser",[
   body('email', 'email must be valid').isEmail(),
@@ -87,8 +87,20 @@ router.post("/loginUser",[
       Console.error(error.message);
       res.status(500).send("Bad request");
   }
-
-
 });
+
+//Route 3: get the loggedin user by using POST: 6000/api/auth/getUser
+
+router.post("/getUser",fetchuser,async(req, res) => {
+
+  try {
+    userId = req.user.id;
+    const user = await User.findById(userId).select("-password");
+    res.send(user);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Bad request");
+  }
+})
 
 module.exports = router;
