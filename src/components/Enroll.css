@@ -1,0 +1,21 @@
+
+.enroll{
+    text-align: center;
+    font-size: 33px;
+    background-color: lightgray;
+}
+
+.badge {
+    margin: 7px;
+}
+
+.enroll p {
+    padding-top: 11px;
+}
+
+.info{
+    font-size: 33px;
+    text-align: center;
+    background-color: bisque;
+}
+

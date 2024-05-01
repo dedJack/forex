@@ -1,9 +1,10 @@
 import './App.css';
 import Navbar from './components/Navbar';
-import Title from './components/Title';
+// import Title from './components/Title';
 import Benefits from './components/Benefits';
 import Home from './components/Home';
 import About from "./components/About";
+import Enroll from "./components/Enroll";
 import {
   BrowserRouter as Router,
   Routes,
@@ -14,16 +15,17 @@ function App() {
   return (
     <>
     <Router>
-        <Title/>
+        {/* <Title/> */}
         <Navbar/>
-        
         <div >
           <Routes>
             <Route  path="/" element={<Home/>} />
+            
             <Route  path="/Benefits" element={<Benefits/>}/>
             <Route  path="/About" element={<About/>}/>
           </Routes>
         </div>
+        <Enroll/>
     </Router>
     </>
   );
