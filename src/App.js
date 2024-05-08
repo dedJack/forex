@@ -4,7 +4,6 @@ import Navbar from './components/Navbar';
 import Benefits from './components/Benefits';
 import Home from './components/Home';
 import About from "./components/About";
-import Enroll from "./components/Enroll";
 import {
   BrowserRouter as Router,
   Routes,
@@ -19,13 +18,12 @@ function App() {
         <Navbar/>
         <div >
           <Routes>
-            <Route  path="/" element={<Home/>} />
+            <Route  path="/" element={<Home/>}/>
             
             <Route  path="/Benefits" element={<Benefits/>}/>
             <Route  path="/About" element={<About/>}/>
           </Routes>
         </div>
-        <Enroll/>
     </Router>
     </>
   );
