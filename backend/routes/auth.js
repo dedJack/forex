@@ -53,7 +53,7 @@ router.post("/createUser",[
 
 router.post("/loginUser",[
     body('email', 'email must be valid').isEmail(),
-    body('password' , 'Password must contain 5 characters').isLength({ min: 5 }),
+    body('password' , 'Password must contain 5 characters').exists()
     ],async(req, res) => {
     const errors = validationResult(req);
 
