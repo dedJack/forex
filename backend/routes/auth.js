@@ -2,14 +2,15 @@ const express = require("express");
 const User = require("../models/User");
 const { body, validationResult } = require('express-validator');
 const router = express.Router();
-const jwt = require('jsonwebtoken');
-const jwt_Secret = 'helloIamGoodboy';
+const bcrypt = require('bcryptjs');
+// const cookie = require('cookie-parser');
+const fetchuser = require('../middleware/fetchuser');  
 
 //Route 1 : To create a user Using POST: 6000/api/auth/createUser
 router.post("/register", [
     body('name', 'Enter your name'),
     body('email', 'email must be valid').isEmail(),
-    body('password', 'Password must contain 5 characters').isLength(6)
+    body('password', 'Password must contain 6 characters').isLength(6)
 ], async (req, res) => {
     // console.log(req.body);
     const { name, email, password } = req.body;
@@ -25,69 +26,66 @@ router.post("/register", [
             const finalUser = new User({
                 name, email, password
             })
-            //HAsing will be done here.
+            //Hashing will be done here.
             const storeData = await finalUser.save();
-            console.log(storeData);
+            // console.log(storeData);
 
+            res.status(200).json({ status: 200, storeData });
         }
     } catch (error) {
         res.status(500).json({ errors: "Bad request" });
     }
-
-
 });
 
 // Route 2 : to login using POST: 6000/api/auth/loginUser
 
-// router.post("/loginUser",[
-//     body('email', 'email must be valid').isEmail(),
-//     body('password' , 'Password must contain 5 characters').exists()
-//     ],async(req, res) => {
-// //     const errors = validationResult(req);
+router.post('/login', async (req, res) => {
+    const {email, password} = req.body;
+    // console.log(req.body);
+    if (!email || !password) {
+        res.status(401).json({ error: "Enter your details" });
+    }
+        try {
+            const existUser = await User.findOne({ email: email });
+            if (existUser) {
+                const comparePass = await bcrypt.compare(password, existUser.password);
+                if (!comparePass) {
+                    res.status(401).json({ error: "Incorrect Password" });
+                } else {
 
-// //     //checks If error is found, then return error with bad message request.
-//     if (!errors.isEmpty()) {
-//     return res.status(400).json({ errors: errors.array() });
-//     }
+                    //generating Toekn for existing user
+                    let getToken =await existUser.getAuthToken();
+                    // console.log(getToken);
 
-//     const {email , password} = req.body;
-//     try {
-//       let user = await User.findOne({email});
-//       //check if the usre exist or not
-//       if(!user){
-//         return res.status(400).json({error : "Email doesn't exist..."});
-//       }
-// //       //check if the compared password is right or not.
-//       const comparePassword = await bcrypt.compare(password, user.password);
-//       if(!comparePassword){
-//         return res.status(400).json({error : "Incorrect password.."});
-//       }
-//       const data ={
-//         user : {
-//           id : user.id
-//         }
-//       }
-//       const authToken = jwt.sign(data ,jwt_Secret);
-//       res.json(authToken);
+                    // cookie generation
+                    res.cookie("usercookie",getToken,{
+                        expires:new Date(Date.now()+9000000),
+                        httpOnly:true
+                    });
+    
+                    const result = {
+                        existUser,
+                        getToken
+                    }
+                    res.status(200).json({status:200,result})
+                }
+            }
+        } catch (error) {
+            res.status(500).json({ errors: "NoT GOOD" });
+        }
+    }
 
-//     } catch (error) {
-//       Console.error(error.message);
-//       res.status(500).send("Bad request");
-//     }
-// });
+);
 
-// //Route 3: get the loggedin user by using POST: 6000/api/auth/getUser
-
-// router.post("/getUser",fetchuser,async(req, res) => {
-
-//   try {
+router.get("/getUser",fetchuser,async(req, res) => {
+console.log('done');
+  try {
 //     userId = req.user.id;
-//     const user = await User.findById(userId).select("-password");
-//     res.send(user);
-//   } catch (error) {
-//     console.error(error.message);
-//     res.status(500).send("Bad request");
-//   }
-// })
+    const user = await User.findById(req.userId).select("-password");
+    res.status(200).json({status : 200, user});
+  } catch (error) {
+    res.status(500).json("Bad request");
+  }
+})
 
 module.exports = router;

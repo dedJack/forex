@@ -1,9 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Home.css'
 import Enroll from "./Enroll";
 
 
 const Home = () => {
+
+  const DashboardValid = async()=>{
+    //token get from localstorage which is stored. reference-- 'login.js'
+    let token = localStorage.getItem("userDataToken");
+
+    const data = await fetch("/getUser", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "auth-token": token
+        }
+    });
+    const response = await data.json();
+    console.log(response);
+  }
+
+  useEffect(() => {
+        DashboardValid();
+
+})
+
   return (
     <div >
       <div className="image">

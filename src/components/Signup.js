@@ -36,22 +36,28 @@ const Signup = () => {
     } else {
       // console.log('Registration succesfully done');
 
-      const data = await fetch('/register',{
-      method:"POST",
-      headers:{
-        "Content-Type": "application/json"
-      },
-      body:JSON.stringify({name, email, password})
+      const data = await fetch('/register', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name, email, password })
       });
 
       const response = await data.json();
       console.log(response);
+
+      if (response.status === 200) {
+        alert('User register successfull...');
+        setInVal({ ...inVal, name: "", email: "", password: "" });
+      }
+
     }
   }
 
   return (
     <div>
-      <form className='container'>
+      <form className='container w-50 my-3'>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">Name</label>
           <input type="name" className="form-control" onChange={setVal} value={inVal.name} id="name" name="name" aria-describedby="emailnameHelp" />
