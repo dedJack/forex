@@ -7,7 +7,7 @@ const enroll = () => {
       <div className="enroll my-2">
       <p><span className="badge rounded-pill text-bg-dark mt-1">Click</span>Register for FREE 1 - 1 Appointment</p>
       </div>
-      <p className="info">IMPORTANT INFORMATION THROUGH ADMIN PANEL</p>
+      <marquee className="info">IMPORTANT INFORMATION THROUGH ADMIN PANEL</marquee>
     </div>
   )
 }

@@ -33,7 +33,7 @@ router.post("/register", [
             res.status(200).json({ status: 200, storeData });
         }
     } catch (error) {
-        res.status(500).json({ errors: "Bad request" });
+        res.status(500).json({ error: "Registration Error" });
     }
 });
 
@@ -71,20 +71,20 @@ router.post('/login', async (req, res) => {
                 }
             }
         } catch (error) {
-            res.status(500).json({ errors: "NoT GOOD" });
+            res.status(401).json({ error: "Login error" });
         }
     }
 
 );
 
 router.get("/getUser",fetchuser,async(req, res) => {
-console.log('done');
+// console.log('done');
   try {
-//     userId = req.user.id;
-    const user = await User.findById(req.userId).select("-password");
+    let userId = req.userId;
+    const user = await User.findById(userId).select("-password");
     res.status(200).json({status : 200, user});
   } catch (error) {
-    res.status(500).json("Bad request");
+    res.status(401).json({status: 401 ,error});
   }
 })
 

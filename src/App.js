@@ -6,6 +6,7 @@ import Home from './components/Home';
 import About from "./components/About";
 import Login from './components/Login';
 import Signup from './components/Signup';
+import Error from "./components/Error"
 import {
   BrowserRouter as Router,
   Routes,
@@ -20,11 +21,13 @@ function App() {
         <Navbar/>
         <div >
           <Routes>
-            <Route  path="/" element={<Home/>}/>
-            <Route  path="/Benefits" element={<Benefits/>}/>
-            <Route  path="/About" element={<About/>}/>
+            <Route path="/" element={<Home/>}/>
+            <Route path="/Benefits" element={<Benefits/>}/>
+            <Route path="/About" element={<About/>}/>
             <Route path="/Login" element={<Login/>} />
             <Route path="/Signup" element={<Signup/>} />
+            <Route path="*" element={<Error/>} />
+
           </Routes>
         </div>
     </Router>

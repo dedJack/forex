@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
 
@@ -7,7 +8,8 @@ const Signup = () => {
     email: '',
     password: ''
   })
-  // console.log(inVal)
+
+  const history = useNavigate();
 
   const setVal = (e) => {
     const { name, value } = e.target;
@@ -49,6 +51,7 @@ const Signup = () => {
 
       if (response.status === 200) {
         alert('User register successfull...');
+        history("/login");
         setInVal({ ...inVal, name: "", email: "", password: "" });
       }
 

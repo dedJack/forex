@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
 
   const [inVal, setInVal] = useState({
@@ -7,6 +7,7 @@ const Login = () => {
     password: ""
   })
 
+  const history = useNavigate();
   //onChange function...
   const setVal = (e) =>{
     const {name, value} = e.target;
@@ -43,8 +44,9 @@ const Login = () => {
       console.log(response);
 
       if(response.status === 200){
-        localStorage.setItem("userDataToken",response.result.getToken)
-        setInVal({...inVal, email: "", password:""})
+        localStorage.setItem("userDataToken",response.result.getToken);
+        history("/");
+        setInVal({...inVal, email: "", password:""});
       }
     }
   }
