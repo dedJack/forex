@@ -12,6 +12,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import ReviewItem from './components/ReviewItem';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/Login" element={<Login/>} />
             <Route path="/Signup" element={<Signup/>} />
             <Route path="*" element={<Error/>} />
+            <Route path="/ReviewItem" element={<ReviewItem/>} />
 
           </Routes>
         </div>
