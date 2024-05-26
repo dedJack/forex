@@ -3,7 +3,11 @@ const { Schema, default: mongoose } = require("mongoose");
 
 const ReviewSchema = new Schema({
 
-    review:{
+    // user:{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'user'
+    // },
+    notes:{
         type: String,
         required: true
     }

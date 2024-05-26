@@ -37,7 +37,7 @@ router.post("/register", [
     }
 });
 
-// Route 2 : to login using POST: 6000/api/auth/loginUser
+// Route 2 : to login using POST: 6000/api/auth/login
 
 router.post('/login', async (req, res) => {
     const {email, password} = req.body;
@@ -77,8 +77,9 @@ router.post('/login', async (req, res) => {
 
 );
 
+//Route 3: fetch all user by GET.
+
 router.get("/getUser",fetchuser,async(req, res) => {
-// console.log('done');
   try {
     let userId = req.userId;
     const user = await User.findById(userId).select("-password");
