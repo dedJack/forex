@@ -1,42 +1,37 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import noteContext from '../context/noteContext'
 
-const ReviewItem = () => {
-    const object = [
-        {
-            id: 1,
-            name: "Aman Choudhary",
-            review: "NOT GOOD"
-        },
-        {
-            id: 2,
-            name: "Maynk vaIdya",
-            review: "You are good boy"
-        },
-        {
-            id: 3,
-            name: "Shubham Sahu",
-            review: " boy"
-        }
-    ]
+const ReviewItem = (props) => {
+
+    const context = useContext(noteContext);
+    const { reviews, addReview} = context;
     // let {id, name,review} = props    
     return (
         <div>
-            {
-                object.map((user, id) => (
-
-                    <div className=" d-flex  mt-4" key={id}>
-                        <div className="card mb-3 mx-4" style={{ width: "18rem", height: "10rem" }}>
-                            <div className="card-body rounded" >
-                                <h5 className="card-title">{user.name}</h5>
-                                <h6 className="card-subtitle mb-2 text-body-secondary">{user.id}</h6>
-                                <p className="card-text m-0">{user.review}</p>
-                                {/* <Link to="#" className="card-link">see more</Link> */}
+        <div className="container" style={{}}>
+        <div className="row">
+            {reviews.map((review) => {
+                return (
+                    <div className="col-md-3 m-2 p-2 rounded"
+                        style={{
+                            width: "16.5rem",
+                            backgroundColor: "lavender",
+                        }}>
+                        <div className="p-2 rounded" style={{ height: "8rem" }}>
+                            <div className="card-body">
+                                <h5 className="card-title"><b>{review._id}</b></h5>
+                                <p className="card-text m-0"><small className="text-body-secondary">27 May 2024</small></p>
+                                <p className="card-text" style={{ height: "50px" }} >{review.notes}</p>
+                                {/* <Link rel="noreferrer" to="" target='_blank' className="btn btn-sm btn-dark">Read more</Link> */}
                             </div>
                         </div>
                     </div>
-
-                ))
+                )
+            })
             }
+        </div>
+        </div>
         </div>
     )
 }

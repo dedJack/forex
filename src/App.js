@@ -13,10 +13,13 @@ import {
   Route,
 } from "react-router-dom";
 import ReviewItem from './components/ReviewItem';
+import NoteState from './context/NoteState';
 
 function App() {
   return (
     <>
+    <NoteState>
+
     <Router>
         {/* <Title/> */}
         <Navbar/>
@@ -33,6 +36,8 @@ function App() {
           </Routes>
         </div>
     </Router>
+    </NoteState>
+
     </>
   );
 }
