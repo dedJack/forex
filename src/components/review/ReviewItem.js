@@ -1,15 +1,13 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
-import noteContext from '../context/noteContext'
+import noteContext from '../../context/noteContext'
 
 const ReviewItem = (props) => {
 
     const context = useContext(noteContext);
     const { reviews, addReview} = context;
-    // let {id, name,review} = props    
     return (
         <div>
-        <div className="container" style={{}}>
+        <div className="container" >
         <div className="row">
             {reviews.map((review) => {
                 return (

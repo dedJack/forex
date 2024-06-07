@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import './Home.css'
 import Enroll from "./Enroll";
-import ReviewItem from './ReviewItem';
+import ReviewItem from './review/ReviewItem';
 import { useNavigate} from 'react-router-dom';
+import AddReview from './review/AddReview';
 
 
 const Home = () => {
 
   const history = useNavigate();
-  const [showReview, setShowReview] = useState(false);
 
   const DashboardValid = async () => {
     //token get from localstorage which is stored. reference-- 'login.js'
@@ -34,10 +34,6 @@ const Home = () => {
     }
   }
 
-  const handleReviewButtonClick = () => {
-    setShowReview(true);
-  };
-
   useEffect(() => {
     DashboardValid();
   }, [])
@@ -54,20 +50,9 @@ const Home = () => {
         <Enroll />
       </div>
       <div className="container">
-        <h2 className='text-center text-decoration-underline' onClick={handleReviewButtonClick}>YOUR REVIEWS</h2>
+        <h2 className='text-center text-decoration-underline'>YOUR REVIEWS</h2>
       </div>
-      {showReview && (
-        <form className='container' id='reviewCard'>
-          <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-          </div>
-          <div class="input-group mb-3">
-            <textarea class="form-control" aria-label="With textarea"></textarea>
-          </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
-        </form>
-      )}
+      <AddReview />      
       <ReviewItem />
     </div>
   )

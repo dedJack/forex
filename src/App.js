@@ -12,14 +12,13 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import ReviewItem from './components/ReviewItem';
+import ReviewItem from './components/review/ReviewItem';
 import NoteState from './context/NoteState';
 
 function App() {
   return (
     <>
     <NoteState>
-
     <Router>
         {/* <Title/> */}
         <Navbar/>
@@ -37,7 +36,6 @@ function App() {
         </div>
     </Router>
     </NoteState>
-
     </>
   );
 }
