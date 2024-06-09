@@ -1,10 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
+import noteContext from '../../context/noteContext'
 
 const AddReview = () => {
+  const context = useContext(noteContext);
+  const {addReview, getReview} = context;
+  
+  useEffect(() => {
+   getReview();
+  }, []);
+
   const [review, setReview] = useState({email:"", description:""})
-
-  const handleSubmit = ()=>{
-
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    addReview(review.email,review.description)
   }
 
   const onChange =(e)=>{

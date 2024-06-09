@@ -1,40 +1,37 @@
 import React, { useState } from "react";
 import NoteContext from "./noteContext";
+import { json } from "react-router-dom";
 
 const NoteState = (props) => {
-  const reviewsInitial = [
-    {
-      "_id": "6653213ca25400b01ee1c7a5",
-      "notes": "This is wonderefull website",
-      "__v": 0
-    },
-    {
-      "_id": "66532223b6331e3618bedee7",
-      "notes": "I get soo much from this website ",
-      "__v": 0
-    },
-    {
-      "_id": "665368446d364cd337a13fff",
-      "notes": "I get soo much from this website becoz iknw nothing about trading ",
-      "__v": 0
-    },
-    {
-      "_id": "6653685e6d364cd337a14002",
-      "notes": "I never got such clear vision of trading",
-      "__v": 0
-    },
-    {
-      "_id": "66536b31d2888a6d26783745",
-      "notes": "I never got such clear   of trading",
-      "__v": 0
-    }
-  ]
+  const reviewsInitial = []
+
+
+  //getAllReview
+  const getReview = async() =>{
+    //API call
+    const response = await fetch(`/fetchAllReview`,{
+      method: 'GET',
+      headers:{
+        "Content-Type" : 'application/json'
+      }
+    })
+    const data = await response.json();
+    // console.log(data);
+    setReviews(data)
+  }
 
   //addReview
-  const addReview = (review) => {
-    review = null;
-    setReviews(reviews.push(review));
+  const addReview = (email,notes) => {
+    console.log("Adding a new note");
+    const review={
+      "_id": "66536b31d2888a6d267837456",
+      "email": email,
+      "notes": notes,
+      "__v": 0
+    };
+    setReviews(reviews.concat(review));
   }
+
   //deleteReview
   const deleteReview = () => {
 
@@ -42,7 +39,7 @@ const NoteState = (props) => {
 
   const [reviews, setReviews] = useState(reviewsInitial)
   return (
-    <NoteContext.Provider value={{ reviews, addReview, deleteReview }}>
+    <NoteContext.Provider value={{ reviews, addReview, deleteReview, getReview }}>
       {props.children}
     </NoteContext.Provider>
   )
