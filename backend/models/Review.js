@@ -3,9 +3,9 @@ const { Schema, default: mongoose } = require("mongoose");
 
 const ReviewSchema = new Schema({
 
-    user:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'user'
+    email:{
+        type: String,
+        required: true
     },
     notes:{
         type: String,

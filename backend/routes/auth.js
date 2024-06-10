@@ -53,7 +53,7 @@ router.post('/login', async (req, res) => {
                     res.status(401).json({ error: "Incorrect Password" });
                 } else {
 
-                    //generating Toekn for existing user
+                    //generating Token for existing user
                     let getToken =await existUser.getAuthToken();
                     // console.log(getToken);
 

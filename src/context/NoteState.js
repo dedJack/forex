@@ -1,18 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NoteContext from "./noteContext";
-import { json } from "react-router-dom";
 
 const NoteState = (props) => {
+
+  //User Authentication
+  
+  const [user, setUser] = useState("");
+
+  const DashboardValid = async () => {
+    //token get from localstorage which is stored. reference-- 'login.js'
+    let token = localStorage.getItem("userDataToken");
+
+    const data = await fetch("/getUser", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token
+      }
+    });
+    const response = await data.json();
+    // console.log(response.user);
+    setUser(response.user);
+  }
+
+  // eslint-disable-next-line
+  useEffect(() => {
+    DashboardValid();
+  }, [])
+  
+
+  /*-----------------------------------------------------------------------------------------*/
+  //Review Controller
+
   const reviewsInitial = []
 
-
   //getAllReview
-  const getReview = async() =>{
+  const getReview = async () => {
     //API call
-    const response = await fetch(`/fetchAllReview`,{
+    const response = await fetch(`/fetchAllReview`, {
       method: 'GET',
-      headers:{
-        "Content-Type" : 'application/json'
+      headers: {
+        "Content-Type": 'application/json'
       }
     })
     const data = await response.json();
@@ -21,10 +49,19 @@ const NoteState = (props) => {
   }
 
   //addReview
-  const addReview = (email,notes) => {
+  const addReview = async (email, notes) => {
+    //API call
+    const response = await fetch('/addReview', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      }, body: JSON.stringify({ email, notes })
+    });
+
+    const data = await response.json();
+    console.log(data);
     console.log("Adding a new note");
-    const review={
-      "_id": "66536b31d2888a6d267837456",
+    const review = {
       "email": email,
       "notes": notes,
       "__v": 0
@@ -39,7 +76,7 @@ const NoteState = (props) => {
 
   const [reviews, setReviews] = useState(reviewsInitial)
   return (
-    <NoteContext.Provider value={{ reviews, addReview, deleteReview, getReview }}>
+    <NoteContext.Provider value={{ user, reviews, addReview, deleteReview, getReview }}>
       {props.children}
     </NoteContext.Provider>
   )

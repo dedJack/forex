@@ -7,13 +7,13 @@ import About from "./components/About";
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Error from "./components/Error"
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
 import ReviewItem from './components/review/ReviewItem';
 import NoteState from './context/NoteState';
+import {
+  BrowserRouter as Router,
+Routes,
+Route,
+} from "react-router-dom";
 
 function App() {
   return (
