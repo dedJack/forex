@@ -25,8 +25,8 @@ const Home = () => {
       </div>
       <AddReview />
       <div className="container ">
-        <div className="row">
-          {reviews.map((review, key) => {
+        <div className="row">          
+          {reviews.map((review) => {
             return (
               <div className="col-md-3 m-2 p-2 rounded"
                 key={review._id}
@@ -47,7 +47,7 @@ const Home = () => {
             )
           }).slice(0, 3)
           }
-          <div className="col-md-3 m-2 p-2 rounded"
+          {reviews.length>=4 && <div className="col-md-3 m-2 p-2 rounded"
             style={{
               width: "16.5rem",
               backgroundColor: "lavender",
@@ -57,7 +57,7 @@ const Home = () => {
                 <Link to="/ReviewItem" >See more</Link>
               </div>
             </div>
-          </div>
+          </div>}          
         </div>
       </div>
     </div>

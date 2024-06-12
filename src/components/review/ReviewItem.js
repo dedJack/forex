@@ -9,14 +9,15 @@ const ReviewItem = (props) => {
         <div>
         <div className="container" >
         <div className="col">
-            {reviews.map((review, key) => {
+            {reviews.map((review) => {
                 return (
                     <div className="col m-2 p-2 rounded"
+                    key={review._id}
                         style={{
                             backgroundColor: "lavender",
                         }}>
                         <div className="p-2 rounded"  style={{ height: "6rem" }}>
-                            <div className="card-body" key={review._id}>
+                            <div className="card-body" >
                                 <div className="d-flex">
                                 <p className="card-text fs-6 text-body-secondary">{review.email}</p>
                                 </div>

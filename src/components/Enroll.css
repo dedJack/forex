@@ -1,12 +1,28 @@
 
 .enroll{
-    text-align: center;
+    /* text-align: center; */
     font-size: 33px;
     background-color: lightgray;
+    
+        display: flex;
+        justify-content: center;
+    
 }
 
 .badge {
     margin: 7px;
+}
+
+.modal-title{
+    margin: 0 126px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+.modal-body{
+    font-size: 1.2rem;
+}
+.modal-content{
+    font-weight: bold;
 }
 
 .enroll marquee {
