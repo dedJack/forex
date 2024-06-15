@@ -1,0 +1,49 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: url('./images/signup_img.jpg'),no-repeat;
+    background-size: cover;
+}
+
+.signForm{
+    width: 80%;
+    height: 90%;
+    border-radius: 5px;
+    /* border: 2px solid salmon; */
+    padding: 15px;
+    position: relative;
+    top: 20px;
+    bottom: 20px;
+    left: 0;
+    font-weight: bold;
+    box-shadow: 0 20px 8px 0 rgba(0, 0, 0, 0.2), 0 26px 30px 0 rgba(0, 0, 0, 0.19);
+}
+
+.myForm{
+    font-size: 1.2rem;
+    color: whitesmoke;
+    height: 430px;
+   margin-top: auto;
+   padding: 48px 0;
+   margin: auto;
+
+}
+
+.myForm input{
+    background-color: lightgrey;
+    border-radius: 15px;
+    border: 2px solid gray;
+}
+
+.btn{
+    border-radius: 20px;
+    width: 100px;
+    margin: 6px 0;
+}
+
+.btn:hover{
+    background-color: rgb(250, 98, 37);
+    border: none;
+}

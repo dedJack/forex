@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import "./Signup.css"
 
 const Signup = () => {
 
@@ -59,24 +60,28 @@ const Signup = () => {
   }
 
   return (
-    <div>
-      <form className='container w-50 my-3'>
+    <div className='ok'>
+      <div className="signForm m-auto">
+      <form className='myForm w-50 my-3'>
         <div className="mb-3">
-          <label htmlFor="name" className="form-label">Name</label>
-          <input type="name" className="form-control" onChange={setVal} value={inVal.name} id="name" name="name" aria-describedby="emailnameHelp" />
+          <label htmlFor="name" className="form-label">Enter Your Name:</label>
+          <input type="name" className=" form-control" placeholder='Enter your name' onChange={setVal} value={inVal.name} id="name" name="name" aria-describedby="emailnameHelp" />
+        </div>
+        <div className="mb-3" >
+          <label htmlFor="email" className="form-label">Email address:</label>
+          <input type="email" className=" form-control" placeholder='Enter your Email' onChange={setVal} value={inVal.email} id="email" name="email" aria-describedby="emailHelp" />
+          <p id="emailHelp" className="form-text " style={{color:"whitesmoke", fontWeight:"lighter"}}>We'll never share your email with anyone else.</p>
         </div>
         <div className="mb-3">
-          <label htmlFor="email" className="form-label">Email address</label>
-          <input type="email" className="form-control" onChange={setVal} value={inVal.email} id="email" name="email" aria-describedby="emailHelp" />
-          <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+          <label htmlFor="password" className="form-label">Enter Your Password:</label>
+          <input type="password" className=" form-control" placeholder='password' onChange={setVal} value={inVal.password} name="password" id="password" />
         </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">Password</label>
-          <input type="password" className="form-control" onChange={setVal} value={inVal.password} name="password" id="password" />
+        <div className="text-center">
+        <button type="submit" className="btn btn-primary " onClick={handleSubmit}> Submit</button>
         </div>
-
-        <button type="submit" className="btn btn-primary" onClick={handleSubmit}> Submit</button>
       </form>
+      {/* <img src={require("./images/warren_buffet.webp")} alt=""  /> */}
+      </div>
     </div>
   )
 }
