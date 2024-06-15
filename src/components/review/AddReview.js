@@ -43,14 +43,14 @@ const AddReview = () => {
   }
 
   return (
-    <div>
-        <form className='container' onSubmit={handleSubmit} id='reviewCard'>
+    <div >
+        <form className='container' onSubmit={handleSubmit} id='reviewCard' style={{display:user ? "block" : "none"}} >
           <div className="mb-3">
             <label htmlFor="email" className="form-label">Email address</label>
             <input type="email" className="form-control" name="email" id="email" value={review.email} onChange={onChange} aria-describedby="emailHelp" />
           </div>
           <div className="mb-3">
-            <label htmlFor="description" className="form-label">Decription</label>
+            <label htmlFor="description" className="form-label">Description</label>
             <textarea className="form-control" name="description" id="description"  onChange={onChange} aria-label="With textarea"></textarea>
           </div>
           <button type="submit" className="btn btn-primary" >Submit</button>

@@ -4,15 +4,11 @@ import './Enroll.css'
 const enroll = () => {
   return (
     <div>
-
-
       <div className='enroll my-2 '>
-        {/* <!-- Button trigger modal --> */}
         <button type="button" className="badge btn btn-primary" data-bs-toggle="modal" data-bs-target="#enquiryForm">
           Enroll
         </button><span> REGISTER FOR FREE 1-1 APPOINTMENT </span>
 
-        {/* <!-- Modal --> */}
         <div className="modal fade" id="enquiryForm" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div className="modal-dialog">
             <div className="modal-content bg-secondary">
@@ -49,6 +45,7 @@ const enroll = () => {
           </div>
         </div>
       </div>
+      {/* // eslint-disable-next-line */}
       <marquee className="info">IMPORTANT INFORMATION THROUGH ADMIN PANEL</marquee>
     </div>
   )
