@@ -1,49 +1,30 @@
-
-body{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background: url('./images/signup_img.jpg'),no-repeat;
-    background-size: cover;
-}
-
 .signForm{
+    background-color: black;
     width: 80%;
-    height: 90%;
-    border-radius: 5px;
-    /* border: 2px solid salmon; */
-    padding: 15px;
-    position: relative;
     top: 20px;
-    bottom: 20px;
-    left: 0;
-    font-weight: bold;
-    box-shadow: 0 20px 8px 0 rgba(0, 0, 0, 0.2), 0 26px 30px 0 rgba(0, 0, 0, 0.19);
-}
-
-.myForm{
-    font-size: 1.2rem;
+    border-radius: 10px;
     color: whitesmoke;
-    height: 430px;
-   margin-top: auto;
-   padding: 48px 0;
-   margin: auto;
-
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: relative;
+    display: flex;
 }
 
-.myForm input{
-    background-color: lightgrey;
-    border-radius: 15px;
-    border: 2px solid gray;
+.main-title{
+    padding: 8px 0;
+    text-decoration: underline;
 }
-
-.btn{
-    border-radius: 20px;
-    width: 100px;
-    margin: 6px 0;
+.myInfo{
+    width: 40%;
+    margin: auto;
 }
-
-.btn:hover{
-    background-color: rgb(250, 98, 37);
+.myInfo input{
+    background-color: rgb(214, 197, 197);
     border: none;
+}
+
+.signupBtn{
+    border-radius: 10px;
+    background-color: rgb(42, 1, 80);
+    border: none;
+    box-shadow: 1px 1px 5px rgb(42, 1, 80);
 }

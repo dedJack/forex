@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+
 const Login = () => {
 
   const [inVal, setInVal] = useState({
@@ -9,11 +10,11 @@ const Login = () => {
 
   const history = useNavigate();
   //onChange function...
-  const setVal = (e) =>{
-    const {name, value} = e.target;
+  const setVal = (e) => {
+    const { name, value } = e.target;
 
-    setInVal(()=>{
-      return{
+    setInVal(() => {
+      return {
         ...inVal, [name]: value
       }
     })
@@ -21,7 +22,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const {email, password} = inVal;
+    const { email, password } = inVal;
 
     if (email === "") {
       alert("Enter your Email");
@@ -43,30 +44,43 @@ const Login = () => {
       const response = await data.json();
       console.log(response);
 
-      if(response.status === 200){
-        localStorage.setItem("userDataToken",response.result.getToken);
+      if (response.status === 200) {
+        localStorage.setItem("userDataToken", response.result.getToken);
         history("/");
-        setInVal({...inVal, email: "", password:""});
+        setInVal({ ...inVal, email: "", password: "" });
       }
     }
   }
 
   return (
-    <div>
-      <form className='container w-50 my-3'>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">Email address</label>
-          <input type="email" className="form-control" onChange={setVal} value= {inVal.email} id="email" name="email" aria-describedby="emailHelp" />
-          <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+    <>
+      <section>
+        <div className="signForm container">
+          <div className="image-controller">
+            <img src={require('./images/women-signup.webp')} height={'500px'} alt="" />
+          </div>
+          <div className='myInfo'>
+            <div className="main-title">
+              <h1>Login Form</h1>
+            </div>
+            <form className='myForm my-3'>
+              <div className="mb-3">
+                <label htmlFor="email" className="form-label">Email address</label>
+                <input type="email" className="form-control" placeholder='Enter your email' onChange={setVal} value={inVal.email} id="email" name="email" aria-describedby="emailHelp" />
+                <div id="emailHelp" className="form-text text-white">We'll never share your email with anyone else.</div>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="password" className="form-label">Password</label>
+                <input type="password" className="form-control" placeholder='password' onChange={setVal} value={inVal.password} name="password" id="password" />
+              </div>
+              <div className="text-center">
+                  <button type="submit" className="signupBtn btn btn-primary m-2" onClick={handleSubmit}> Submit</button>
+                </div>
+            </form>
+          </div>
         </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">Password</label>
-          <input type="password" className="form-control" onChange={setVal} value={inVal.password} name="password" id="password" />
-        </div>
-
-        <button type="submit" className="btn btn-primary" onClick={handleSubmit}> Submit</button>
-      </form>
-    </div>
+      </section>
+    </>
   )
 }
 
