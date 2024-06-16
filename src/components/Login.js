@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , Link} from 'react-router-dom';
 
 const Login = () => {
 
@@ -66,8 +66,8 @@ const Login = () => {
             <form className='myForm my-3'>
               <div className="mb-3">
                 <label htmlFor="email" className="form-label">Email address</label>
-                <input type="email" className="form-control" placeholder='Enter your email' onChange={setVal} value={inVal.email} id="email" name="email" aria-describedby="emailHelp" />
-                <div id="emailHelp" className="form-text text-white">We'll never share your email with anyone else.</div>
+                <input type="email" className="form-control" placeholder='Enter your email' onChange={setVal} value={inVal.email} id="email" name="email" />
+                <div className="form-text text-white">We'll never share your email with anyone else.</div>
               </div>
               <div className="mb-3">
                 <label htmlFor="password" className="form-label">Password</label>

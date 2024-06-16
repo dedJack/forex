@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import "./Signup.css"
 
 const Signup = () => {
@@ -74,12 +74,12 @@ const Signup = () => {
               <form className='myForm my-3'>
                 <div className="mb-4">
                   <label htmlFor="name" className="form-label">Enter Your Name:</label>
-                  <input type="name" className=" form-control" placeholder='Enter your name' onChange={setVal} value={inVal.name} id="name" name="name" aria-describedby="emailnameHelp" />
+                  <input type="name" className=" form-control" placeholder='Enter your name' onChange={setVal} value={inVal.name} id="name" name="name" />
                 </div>
                 <div className="mb-4" >
                   <label htmlFor="email" className="form-label">Email address:</label>
-                  <input type="email" className=" form-control" placeholder='Enter your Email' onChange={setVal} value={inVal.email} id="email" name="email" aria-describedby="emailHelp" />
-                  <p id="emailHelp" className="form-text " style={{ color: "whitesmoke", fontWeight: "lighter" }}>We'll never share your email with anyone else.</p>
+                  <input type="email" className=" form-control" placeholder='Enter your Email' onChange={setVal} value={inVal.email} id="email" name="email"  />
+                  <p className="form-text " style={{ color: "whitesmoke", fontWeight: "lighter" }}>We'll never share your email with anyone else.</p>
                 </div>
                 <div className="mb-4">
                   <label htmlFor="password" className="form-label">Enter Your Password:</label>
@@ -89,6 +89,7 @@ const Signup = () => {
                   <button type="submit" className="signupBtn btn btn-primary " onClick={handleSubmit}> Submit</button>
                 </div>
               </form>
+              <div className="form-text text-white text-center">Already have an account. <a href='./Login'>Login</a></div>
             </div>
           </div>
         </main>
