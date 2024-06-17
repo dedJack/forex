@@ -89,4 +89,20 @@ router.get("/getUser",fetchuser,async(req, res) => {
   }
 })
 
+//Route 4: logOut the user
+router.get("/logoutUser",fetchuser,async(req,res)=>{
+    try {
+        req.rootUser.tokens = req.rootUser.tokens.filter((curelem)=>{
+            return curelem.token !== req.token
+        });
+
+        res.clearCookie("usercookie",{path:'/'});
+        req.rootUser.save();
+
+        res.status(200).json({status:200,error});
+    } catch (error) {
+        res.status(401).json({status: 401, error:"not logged out"});
+    }
+})
+
 module.exports = router;

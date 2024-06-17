@@ -29,6 +29,28 @@ const NoteState = (props) => {
   }, [])
   
 
+//User Logged out..
+  const logoutUser = async()=>{
+    
+    let token = localStorage.getItem("userDataToken");
+  
+      const data = await fetch("/logoutUser", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": token,
+          accept: "application/json"
+        },
+        credentials:"include"
+      });
+      const response = await data.json();
+      console.log(response);
+      if(response.status!==200){
+        localStorage.removeItem("userDataToken")
+        setUser(false);
+      }
+
+    }
   /*-----------------------------------------------------------------------------------------*/
   //Review Controller
 
@@ -76,7 +98,7 @@ const NoteState = (props) => {
 
   const [reviews, setReviews] = useState(reviewsInitial)
   return (
-    <NoteContext.Provider value={{ user, reviews, addReview, deleteReview, getReview }}>
+    <NoteContext.Provider value={{ user, reviews, addReview, deleteReview, getReview ,logoutUser}}>
       {props.children}
     </NoteContext.Provider>
   )

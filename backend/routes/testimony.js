@@ -29,27 +29,6 @@ router.post('/addReview', [
     } catch (error) {
         res.status(400).json({ errors: "Review not added" })
     }
-
-
-})
-
-//Route 3 : Delete reviews by using DELETE
-router.delete('/deleteReview', async (req, res) => {
-    // console.log(req.params.id)
-    try {
-        // Find the note to be delete and delete it
-        let note = await Review.findById(req.params.id);
-        if (!note) {
-            return res.status(404).send("Not Found")
-        }
-        else {
-            note = await Review.findByIdAndDelete(req.params.id)
-            res.json({ "Success": "Note has been deleted", note: note });
-        }
-    } catch (error) {
-        console.error(error.message);
-        res.status(500).send("Internal Server Error");
-    }
 })
 
 module.exports = router;

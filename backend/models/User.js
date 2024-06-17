@@ -23,6 +23,11 @@ const UserSchema = new Schema({
         required:true
     },
 
+    isAdmin:{
+        type: Boolean,
+        default: false
+    },
+
     tokens: [
         {
             token: {

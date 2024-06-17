@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import noteContext from '../context/noteContext'
 import { Link, useLocation } from 'react-router-dom'
 
 
 const Navbar = () => {
+
+  const context = useContext(noteContext);
+  const { user,logoutUser } = context;
 
   let location = useLocation();
 
@@ -26,11 +30,21 @@ const Navbar = () => {
               </li>
               <li className="nav-item">
                 <Link className={`nav-link ${location.pathname === '/About' ? 'active' : ''}`} to="/About">About</Link>
-              </li> 
+              </li>
             </ul>
             <form className="d-flex" >
-              <Link className="btn btn-primary mx-1" to="/Login" role="button">login</Link>
-              <Link className="btn btn-primary mx-1" to="/Signup" role="button">signup</Link>
+              {
+                user ? (
+                  <>
+                    <Link className="btn btn-primary mx-1" to="/" onClick={logoutUser} role="button">logout</Link>
+                  </>
+                ) : (
+                  <>
+                  <Link className="btn btn-primary mx-1" to="/Login" role="button">login</Link>
+                  <Link className="btn btn-primary mx-1" to="/Signup" role="button">signup</Link>
+                  </>
+                )
+              }
             </form>
           </div>
         </div>
