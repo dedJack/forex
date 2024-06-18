@@ -49,6 +49,9 @@ const Login = () => {
         history("/");
         setInVal({ ...inVal, email: "", password: "" });
       }
+      else {
+        console.log("NOt found")
+      }
     }
   }
 

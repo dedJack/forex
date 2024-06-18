@@ -49,8 +49,7 @@ const NoteState = (props) => {
         localStorage.removeItem("userDataToken")
         setUser(false);
       }
-
-    }
+  }
   /*-----------------------------------------------------------------------------------------*/
   //Review Controller
 

@@ -6,7 +6,7 @@ import { Link, useLocation } from 'react-router-dom'
 const Navbar = () => {
 
   const context = useContext(noteContext);
-  const { user,logoutUser } = context;
+  const { user, logoutUser } = context;
 
   let location = useLocation();
 
@@ -32,19 +32,34 @@ const Navbar = () => {
                 <Link className={`nav-link ${location.pathname === '/About' ? 'active' : ''}`} to="/About">About</Link>
               </li>
             </ul>
-            <form className="d-flex" >
-              {
-                user ? (
-                  <>
-                    <Link className="btn btn-primary mx-1" to="/" onClick={logoutUser} role="button">logout</Link>
-                  </>
-                ) : (
-                  <>
-                  <Link className="btn btn-primary mx-1" to="/Login" role="button">login</Link>
-                  <Link className="btn btn-primary mx-1" to="/Signup" role="button">signup</Link>
-                  </>
-                )
-              }
+            <form className="d-flex mx-3" >
+
+              <div className="btn-group">
+                <button type="button" className="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  Action
+                </button>
+                <ul className="dropdown-menu bg-secondary ">
+                  {
+                    user ? (
+                      <>
+                      <li>
+                        <Link className="dropdown-item text-white" to="/" onClick={logoutUser} >logout</Link>
+                      </li>
+                      </>
+                    ) : (
+                      <>
+                      <li>
+                        <Link className="dropdown-item text-white" to="/Login" >login</Link>
+                      </li>
+                      <li>
+                        <Link className="dropdown-item text-white" to="/Signup" >signup</Link>
+                      </li>
+                      </>
+                    )
+                  }
+                </ul>
+              </div>
+
             </form>
           </div>
         </div>
