@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import './Home.css'
 import Enroll from "./Enroll";
 import AddReview from './review/AddReview';
 import noteContext from '../context/noteContext'

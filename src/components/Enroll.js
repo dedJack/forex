@@ -1,5 +1,4 @@
 import React from 'react'
-import './Enroll.css'
 
 const enroll = () => {
   return (
