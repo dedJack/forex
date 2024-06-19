@@ -34,6 +34,7 @@ const AddReview = () => {
     }
     else{
       addReview(user.email, review.description)
+      setReview({email:user.email, description:""})
     }
   }
 
@@ -51,7 +52,7 @@ const AddReview = () => {
           </div>
           <div className="mb-3">
             <label htmlFor="description" className="form-label">Description</label>
-            <textarea className="form-control" name="description" id="description"  onChange={onChange} aria-label="With textarea"></textarea>
+            <textarea className="form-control" name="description" id="description"  onChange={onChange} value={review.description} aria-label="With textarea"></textarea>
           </div>
           <button type="submit" className="btn btn-primary" >Submit</button>
         </form>

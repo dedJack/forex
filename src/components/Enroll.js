@@ -52,7 +52,7 @@ const Enroll = () => {
       setInForm({
         name:"",
         contactNumber:"",
-        email:user.email,
+        email:"",
         enquiry:""})
       }
   }
@@ -63,7 +63,7 @@ const Enroll = () => {
       <div className='enroll my-2 '>
         <button type="button" className="badge btn btn-primary" data-bs-toggle="modal" data-bs-target="#enquiryForm">
           Enroll
-        </button><span> REGISTER FOR FREE 1-1 APPOINTMENT </span>
+        </button><span > REGISTER FOR FREE 1-1 APPOINTMENT </span>
 
         <div className="modal fade" id="enquiryForm" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div className="modal-dialog">
@@ -84,7 +84,7 @@ const Enroll = () => {
                   </div>
                   <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email:</label>
-                    <input type="email" disabled className="form-control" onChange={onChange} value={inForm.email} name="email" id="email" aria-describedby="emailHelp" />
+                    <input type="email" className="form-control" onChange={onChange} value={inForm.email} name="email" id="email" aria-describedby="emailHelp" />
                   </div>
                     <label htmlFor="email" className="form-label">Your Enquiry:</label>
                   <div className="input-group input-group-sm mb-3">
