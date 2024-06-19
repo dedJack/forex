@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Signup = () => {
 
@@ -26,15 +27,15 @@ const Signup = () => {
     const { name, email, password } = inVal;
 
     if (name === '') {
-      alert('Enter Your name');
+      toast.error('Enter Your name');
     } else if (email === '') {
-      alert('Enter a valid Email');
+      toast.error('Enter a valid Email');
     } else if (!email.includes("@")) {
-      alert('Enter a valid Email');
+      toast.error('Enter a valid Email');
     } else if (password === '') {
-      alert('Enter your password');
+      toast.error('Enter your password');
     } else if (password.length < 6) {
-      alert('Enter your password');
+      toast.error('Enter your password');
     } else {
       // console.log('Registration succesfully done');
 
@@ -50,7 +51,7 @@ const Signup = () => {
       console.log(response);
 
       if (response.status === 200) {
-        alert('User register successfull...');
+        toast.success('User register successfull...');
         history("/login");
         setInVal({ ...inVal, name: "", email: "", password: "" });
       }

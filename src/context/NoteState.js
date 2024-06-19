@@ -19,7 +19,7 @@ const NoteState = (props) => {
       }
     });
     const response = await data.json();
-    // console.log(response.user);
+    console.log(response.user);
     setUser(response.user);
   }
 
@@ -27,13 +27,12 @@ const NoteState = (props) => {
   useEffect(() => {
     DashboardValid();
   }, [])
-  
 
 //User Logged out..
   const logoutUser = async()=>{
     
     let token = localStorage.getItem("userDataToken");
-  
+
       const data = await fetch("/logoutUser", {
         method: "GET",
         headers: {
@@ -55,8 +54,8 @@ const NoteState = (props) => {
 
   const reviewsInitial = []
 
-  //getAllReview
-  const getReview = async () => {
+  //getAllReview 
+    const getReview = async () => {
     //API call
     const response = await fetch(`/fetchAllReview`, {
       method: 'GET',
@@ -90,14 +89,9 @@ const NoteState = (props) => {
     setReviews(reviews.concat(review));
   }
 
-  //deleteReview
-  const deleteReview = () => {
-
-  }
-
   const [reviews, setReviews] = useState(reviewsInitial)
   return (
-    <NoteContext.Provider value={{ user, reviews, addReview, deleteReview, getReview ,logoutUser}}>
+    <NoteContext.Provider value={{ user , setUser, reviews, addReview,getReview ,logoutUser}}>
       {props.children}
     </NoteContext.Provider>
   )

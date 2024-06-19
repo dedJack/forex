@@ -21,11 +21,11 @@ router.post('/addReview', [
 
         //If there is error then return bad request.
         if (!error.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+            return res.status(400).json({ errors: error.array() });
         }
         const review = new Review({email, notes });
         const savedNotes = review.save();
-        res.json(savedNotes)
+        res.status(200).json({status:200, savedNotes})
     } catch (error) {
         res.status(400).json({ errors: "Review not added" })
     }

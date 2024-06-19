@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { useNavigate , Link} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Login = () => {
 
@@ -25,13 +26,13 @@ const Login = () => {
     const { email, password } = inVal;
 
     if (email === "") {
-      alert("Enter your Email");
+      toast.error("Enter your Email");
     } else if (!email.includes("@")) {
-      alert("Enter a valid email");
+      toast.error("Enter a valid email");
     } else if (password === "") {
-      alert("Enter a password");
+      toast.error("Enter a password");
     } else if (password.length < 6) {
-      alert("Password must contain 6 letters")
+      toast.error("Password must contain 6 letters")
     } else {
 
       const data = await fetch("/login", {
@@ -45,6 +46,7 @@ const Login = () => {
       console.log(response);
 
       if (response.status === 200) {
+        toast.success("Login Successfull")
         localStorage.setItem("userDataToken", response.result.getToken);
         history("/");
         setInVal({ ...inVal, email: "", password: "" });
