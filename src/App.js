@@ -1,6 +1,5 @@
 import './App.css';
 import Navbar from './components/Navbar';
-// import Title from './components/Title';
 import Benefits from './components/Benefits';
 import Home from './components/Home';
 import About from "./components/About";
@@ -16,6 +15,10 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import AdminLayout from './components/admin/AdminLayout';
+import AdminUsers from './components/admin/AdminUsers';
+import AdminReview from './components/admin/AdminReview';
+import AdminEnquiry from './components/admin/AdminEnquiry';
 
 function App() {
   return (
@@ -45,6 +48,11 @@ function App() {
               <Route path="/Signup" element={<Signup />} />
               <Route path="*" element={<Error />} />
               <Route path="/ReviewItem" element={<ReviewItem />} />
+              <Route path="/Admin" element={<AdminLayout />} >
+                <Route path="AdminUsers" element ={<AdminUsers />} />
+                <Route path="AdminReview" element ={<AdminReview />} />
+                <Route path="AdminEnquiry" element ={<AdminEnquiry />} />
+              </Route>
 
             </Routes>
           </div>

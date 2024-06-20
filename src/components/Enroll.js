@@ -101,7 +101,7 @@ const Enroll = () => {
           </div>
         </div>
       </div>
-      {/* // eslint-disable-next-line */}
+      {/* eslint-disable-next-line  */}
       <marquee className="info">IMPORTANT INFORMATION THROUGH ADMIN PANEL</marquee>
     </div>
   )

@@ -65,7 +65,7 @@ const Signup = () => {
         <main>
           <div className="signForm container grid grid-two-cols">
             <div className="image-controller">
-              <img src={require('./images/women-signup.webp')} height={'500px'} alt="SignUp Image" />
+              <img src={require('./images/women-signup.webp')} height={'500px'} alt="Do SignUp tp move Ahead" />
             </div>
             <div className="myInfo">
               <div className="main-title">

@@ -103,6 +103,29 @@ h2:hover {
     text-decoration-color: blueviolet;
     font-size: 3rem;
 }
+
+/* Admin Panel css */
+
+.panel{
+    /* display: flex; */
+}
+.title{
+    text-align: center;
+    margin: 1rem;
+    border: 2px solid black;
+    border-radius: 29px;
+    padding: 0.5rem;
+    background-color: transparent;
+}
+
+.menu-items{
+    list-style: none;
+}
+.items{
+    text-decoration: none;
+    color: black;
+}
+
 /* Responsive */
 
 @media (max-width: 1160px) {
