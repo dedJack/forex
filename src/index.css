@@ -126,6 +126,53 @@ h2:hover {
     color: black;
 }
 
+
+/* ADMIN Table */
+.adminTitle{
+    text-decoration: underline;
+}
+.table-content{
+    border-collapse: collapse;
+    font-size: 1.2rem;
+    padding: 7px;
+    margin: 15px auto;
+    border-radius: 9px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 1px 1px 5px black;
+    font-weight: 200;
+    cursor: pointer;
+    width: 80%;
+}
+.table-content thead tr{
+    background-color: darkcyan;
+    color: whitesmoke;
+    font-size: 1.4rem; 
+    text-decoration: underline;
+}
+.table-content th,
+.table-content td{
+    padding: 10px 12px;
+}
+.table-content tbody tr{
+    border-bottom: 1px solid grey;
+}
+.table-content tbody tr:nth-child(even){
+    background-color: beige;
+    color: darkcyan;
+}
+.table-content tbody tr:last-child{
+    border-bottom: 3px solid darkcyan;
+
+}
+.admin-btn{
+    width: 80%;
+    border-radius: 15px;
+    background-color: rgb(173, 212, 236);
+    border: none;
+    box-shadow: 1px 1px 4px rgb(48, 30, 65);
+}
+
 /* Responsive */
 
 @media (max-width: 1160px) {

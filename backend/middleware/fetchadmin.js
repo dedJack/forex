@@ -1,3 +1,5 @@
+const fetchuser = require("./fetchuser")
+
 const fetchadmin = (req, res, next)=>{
     try {
         const adminRole = req.rootUser.isAdmin ;

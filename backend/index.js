@@ -18,6 +18,16 @@ app.use(testimony);
 app.use(enquiry);
 app.use(admin)
 
-app.listen(port, () => {
-  console.log(`Forex listening on port http://localhost:${port}`)
+
+const server = app.listen(port, () => {
+  console.log(`Forex listening on port http://localhost:${port}`);
+});
+
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`Port ${port} is already in use. Trying another port...`);
+    server.listen(port + 1);
+  } else {
+    console.error(err);
+  }
 });

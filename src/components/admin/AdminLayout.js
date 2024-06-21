@@ -31,9 +31,9 @@ const AdminLayout = () => {
                         </li>
                     </ul>
                 </nav>
-                <div className="information">
+                {/* <div className="information">
                     Welcome to the Admin Panel.. <br /> We Offer You collections Of FOREX.
-                </div>
+                </div> */}
             </div>
             </header>
             <Outlet />

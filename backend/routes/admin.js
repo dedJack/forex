@@ -10,15 +10,14 @@ const fetchadmin = require('../middleware/fetchadmin');
 // Getting Users details
 router.get('/getAllUserDetails',fetchuser,fetchadmin, async (req, res) => {
     try {
-        console.log("i am here")
         const users = await User.find();
         if (!users || users === 0) {
             return res(401).json({ error: "Users not find..." });
         }
-        return res(200).json(users);
+        return res.status(200).json(users);
     }
     catch {
-        return res(401).json({ error: "Fetching User error..." });
+        return res.status(401).json({ error: "Fetching User error..." });
     }
 })
 
@@ -45,10 +44,10 @@ router.get('/getAllUserEnquiry',fetchuser, async (req, res) => {
         if (!enquiry || enquiry === 0) {
             return res(401).json({ error: "Users not find..." });
         }
-        return res(200).json(enquiry);
+        return res.status(200).json(enquiry);
     }
     catch {
-        return res(401).json({ error: "Fetching User error..." });
+        return res.status(401).json({ error: "Fetching User error..." });
     }
 })
 

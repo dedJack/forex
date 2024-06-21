@@ -41,10 +41,8 @@ const Login = () => {
           "Content-Type": "application/json"
         }, body: JSON.stringify({ email, password })
       });
-
+      // console.log(response);
       const response = await data.json();
-      console.log(response);
-
       if (response.status === 200) {
         toast.success("Login Successfull")
         localStorage.setItem("userDataToken", response.result.getToken);

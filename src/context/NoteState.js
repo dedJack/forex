@@ -4,23 +4,26 @@ import NoteContext from "./noteContext";
 const NoteState = (props) => {
 
   //User Authentication
-  
+
   const [user, setUser] = useState("");
 
   const DashboardValid = async () => {
-    //token get from localstorage which is stored. reference-- 'login.js'
-    let token = localStorage.getItem("userDataToken");
-
-    const data = await fetch("/getUser", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": token
-      }
-    });
-    const response = await data.json();
-    console.log(response.user);
-    setUser(response.user);
+    try {
+      //token get from localstorage which is stored. reference-- 'login.js'
+      let token = localStorage.getItem("userDataToken");
+      const data = await fetch("/getUser", {
+        method: "GET",
+        headers: {
+          "auth-token": token
+        }
+      });
+      const response = await data.json();
+      // console.log(response.user);
+      setUser(response.user);
+    } 
+     catch (error) {
+      console.log("Error fetching users " + error)
+    }
   }
 
   // eslint-disable-next-line
@@ -28,11 +31,11 @@ const NoteState = (props) => {
     DashboardValid();
   }, [])
 
-//User Logged out..
-  const logoutUser = async()=>{
-    
-    let token = localStorage.getItem("userDataToken");
+  //User Logged out..
+  const logoutUser = async () => {
 
+    try {
+      let token = localStorage.getItem("userDataToken");
       const data = await fetch("/logoutUser", {
         method: "GET",
         headers: {
@@ -40,14 +43,18 @@ const NoteState = (props) => {
           "auth-token": token,
           accept: "application/json"
         },
-        credentials:"include"
+        credentials: "include"
       });
       const response = await data.json();
       console.log(response);
-      if(response.status!==200){
+      if (response.status !== 200) {
         localStorage.removeItem("userDataToken")
         setUser(false);
       }
+    } catch (error) {
+      console.log(error)
+    }
+
   }
   /*-----------------------------------------------------------------------------------------*/
   //Review Controller
@@ -55,7 +62,7 @@ const NoteState = (props) => {
   const reviewsInitial = []
 
   //getAllReview 
-    const getReview = async () => {
+  const getReview = async () => {
     //API call
     const response = await fetch(`/fetchAllReview`, {
       method: 'GET',
@@ -91,7 +98,7 @@ const NoteState = (props) => {
 
   const [reviews, setReviews] = useState(reviewsInitial)
   return (
-    <NoteContext.Provider value={{ user , setUser, reviews, addReview,getReview ,logoutUser}}>
+    <NoteContext.Provider value={{ user, setUser, reviews, addReview, getReview, logoutUser }}>
       {props.children}
     </NoteContext.Provider>
   )
