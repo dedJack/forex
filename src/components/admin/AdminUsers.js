@@ -6,7 +6,7 @@ const AdminUsers = () => {
 
   const getAllUsers = async () => {
     try {
-      // console.log("HIii")
+      console.log("HIii")
       let token = localStorage.getItem("userDataToken");
       const data = await fetch("/getAllUserDetails", {
         method: "GET",

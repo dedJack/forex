@@ -106,9 +106,6 @@ h2:hover {
 
 /* Admin Panel css */
 
-.panel{
-    /* display: flex; */
-}
 .title{
     text-align: center;
     margin: 1rem;
@@ -142,7 +139,7 @@ h2:hover {
     box-shadow: 1px 1px 5px black;
     font-weight: 200;
     cursor: pointer;
-    width: 80%;
+    width: 90%;
 }
 .table-content thead tr{
     background-color: darkcyan;
@@ -165,12 +162,18 @@ h2:hover {
     border-bottom: 3px solid darkcyan;
 
 }
+.notes{
+    text-align: left;
+}
 .admin-btn{
-    width: 80%;
+    width: 100%;
     border-radius: 15px;
     background-color: rgb(173, 212, 236);
     border: none;
     box-shadow: 1px 1px 4px rgb(48, 30, 65);
+}
+.admin-btn:hover{
+    background-color: rgb(93, 178, 231);
 }
 
 /* Responsive */

@@ -12,7 +12,7 @@ router.get('/getAllUserDetails',fetchuser,fetchadmin, async (req, res) => {
     try {
         const users = await User.find();
         if (!users || users === 0) {
-            return res(401).json({ error: "Users not find..." });
+            return res.status(401).json({ error: "Users not find..." });
         }
         return res.status(200).json(users);
     }
@@ -27,12 +27,12 @@ router.get('/getAllUserReviews',fetchuser, async (req, res) => {
         console.log("i am here")
         const reviews = await Review.find();
         if (!reviews || reviews === 0) {
-            return res(401).json({ error: "Users not find..." });
+            return res.status(401).json({ error: "Review not find..." });
         }
-        return res(200).json(reviews);
+        return res.status(200).json(reviews);
     }
     catch {
-        return res(401).json({ error: "Fetching User error..." });
+        return res.status(401).json({ error: "Fetching User error..." });
     }
 })
 
@@ -42,7 +42,7 @@ router.get('/getAllUserEnquiry',fetchuser, async (req, res) => {
         console.log("i am here")
         const enquiry = await Enquiry.find();
         if (!enquiry || enquiry === 0) {
-            return res(401).json({ error: "Users not find..." });
+            return res.status(401).json({ error: "Enquiry not find..." });
         }
         return res.status(200).json(enquiry);
     }
