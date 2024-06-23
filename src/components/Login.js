@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import noteContext from "../context/noteContext"
 
 const Login = () => {
+
+  const context = useContext(noteContext);
+const {DashboardValid} = context;
 
   const [inVal, setInVal] = useState({
     email: "",
@@ -48,6 +52,7 @@ const Login = () => {
         localStorage.setItem("userDataToken", response.result.getToken);
         history("/");
         setInVal({ ...inVal, email: "", password: "" });
+        DashboardValid();
       }
       else {
         console.log("NOt found")

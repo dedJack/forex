@@ -98,7 +98,7 @@ const NoteState = (props) => {
 
   const [reviews, setReviews] = useState(reviewsInitial)
   return (
-    <NoteContext.Provider value={{ user, setUser, reviews, addReview, getReview, logoutUser }}>
+    <NoteContext.Provider value={{ user,DashboardValid, setUser, reviews, addReview, getReview, logoutUser }}>
       {props.children}
     </NoteContext.Provider>
   )
