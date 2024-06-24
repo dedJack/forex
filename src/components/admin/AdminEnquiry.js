@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const AdminEnquiry = () => {
 
@@ -43,8 +45,8 @@ const AdminEnquiry = () => {
         }
       })
       if (response.ok) {
-        const data = response.json();
-        console.log(data);
+        // const data = await response.json();
+        // console.log(data);
         getAllEnquiry();
         toast.success("Enquiry deleted Successfully");
       } else {
@@ -69,7 +71,7 @@ const AdminEnquiry = () => {
                 <th>Phone No.</th>
                 <th>Email</th>
                 <th>Enquiry</th>
-                <th>Update</th>
+                <th>View</th>
                 <th>Delete</th>
               </tr>
             </thead>
@@ -80,8 +82,9 @@ const AdminEnquiry = () => {
                     <td>{enquiry.name}</td>
                     <td>{enquiry.contactNumber}</td>
                     <td>{enquiry.email}</td>
-                    <td className='notes'>{enquiry.enquiry}</td>
-                    <td> <button className="admin-btn " onClick={() => { deleteEnquiry(enquiry._id) }} >Delete</button>  </td>
+                    <td>{enquiry.enquiry}</td>
+                    <td><button className="admin-btn" ><Link to={`/admin/AdminEnquiry/${enquiry._id}/view`}>View</Link></button> </td>
+                    <td> <button className="admin-btn " onClick={() => { deleteEnquiry(enquiry._id) }} >Delete</button></td>
                   </tr>
                 )
               })}

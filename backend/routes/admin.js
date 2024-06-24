@@ -39,7 +39,6 @@ router.get('/getAllUserReviews', fetchuser, async (req, res) => {
 // Getting Users Reviews details
 router.get('/getAllUserEnquiry', fetchuser, async (req, res) => {
     try {
-        console.log("i am here")
         const enquiry = await Enquiry.find();
         if (!enquiry || enquiry === 0) {
             return res.status(401).json({ error: "Enquiry not find..." });
@@ -72,25 +71,26 @@ router.delete('/admin/delete_user/:id', async (req, res) => {
 });
 
 //Deleting Enquiry
-router.delete('/admin/delete_enquiry/:id', async(req, res) =>{
+router.delete('/admin/delete_enquiry/:id', async (req, res) => {
     try {
         const enquiryId = req.params.id;
         const enquiry = await Enquiry.findById(enquiryId);
 
-        if(!enquiry){
-            return res.status(401).json({error:"Enquiry not found"});
+        if (!enquiry) {
+            return res.status(401).json({ error: "Enquiry not found" });
         }
 
         await Enquiry.findByIdAndDelete(enquiryId)
-        res.status(200).json({message:"Enquiry deleted successfully"});
+        res.status(200).json({ message: "Enquiry deleted successfully" });
     } catch (error) {
-        res.status(500).json({error: 'Server error'});
+        console.error('Error deleting enquiry:', error);
+        res.status(500).json({ error: 'Server error' });
     }
 })
 
 // UPDATING -----------------------------------------------------------------------------------
 
-//getting single user detail for edit.
+//1: getting single user detail for edit.
 router.get('/admin/:id', async (req, res) => {
     try {
         const userId = req.params.id;
@@ -99,7 +99,6 @@ router.get('/admin/:id', async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
-        // await User.findByIdAndUpdate(userId);
         res.status(200).json({ message: 'User successfully fetched', user });
     } catch (error) {
         console.error('Error fetching single user:', error);
@@ -122,6 +121,23 @@ router.patch('/admin/update_user/:id', async (req, res) => {
         res.status(200).json({ message: "updated Successfully in the server", updatedData })
     } catch (error) {
         res.status(500).json({ error: "didnt update in the server" })
+    }
+})
+
+//2. getting single user Enquiry for view.
+
+router.get('/admin/AdminEnquiry/:id', async (req, res) => {
+    try {
+        const enquiryId = req.params.id;
+        const enquiry = await Enquiry.findById(enquiryId)
+        
+        if (!enquiry) {
+            res.status(404).json({ error: "Enquiry not found" });
+        }
+        res.status(200).json({ error: "Enquiry found" ,enquiry});        
+    } catch (error) {
+        console.log("Error fetching single enquiry", error);
+        res.status(500).json({ error: "Server error" });
     }
 })
 

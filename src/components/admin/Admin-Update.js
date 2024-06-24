@@ -57,7 +57,7 @@ const AdminUpdate = () => {
             })
             if(response.ok){
                 const resultData = await response.json();
-                // console.log(resultData);
+                console.log(resultData);
                 toast.success("User updated successfully");
             }else{
                 toast.error("User not updated");
