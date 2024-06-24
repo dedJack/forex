@@ -175,6 +175,16 @@ h2:hover {
 .admin-btn:hover{
     background-color: rgb(93, 178, 231);
 }
+.UpdateForm{
+    width: 40%;
+    border: 1px solid black;
+    border-radius: 1.2rem;
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding: 1.5rem;
+    margin:  1rem auto;
+    box-shadow: 1px 0 5px black;
+}
 
 /* Responsive */
 

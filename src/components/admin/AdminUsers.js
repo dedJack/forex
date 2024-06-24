@@ -81,7 +81,7 @@ const AdminUsers = () => {
                   <tr key={index}>
                     <td>{user.name}</td>
                     <td>{user.email}</td>
-                    <td> <Link className="admin-btn" to={`/admin/get_user/${user._id}`}>Edit</Link>  </td>
+                    <td> <button className="admin-btn"><Link  to={`/admin/AdminUsers/${user._id}/edit`}>Edit</Link> </button> </td>
                     <td> <button className="admin-btn" onClick={() => { deleteUser(user._id) }}>Delete</button>  </td>
                   </tr>
                 )

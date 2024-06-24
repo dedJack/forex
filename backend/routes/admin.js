@@ -8,7 +8,7 @@ const fetchadmin = require('../middleware/fetchadmin');
 
 
 // Getting Users details
-router.get('/getAllUserDetails',fetchuser,fetchadmin, async (req, res) => {
+router.get('/getAllUserDetails', fetchuser, fetchadmin, async (req, res) => {
     try {
         const users = await User.find();
         if (!users || users === 0) {
@@ -22,7 +22,7 @@ router.get('/getAllUserDetails',fetchuser,fetchadmin, async (req, res) => {
 })
 
 // Getting Users Enquiry details
-router.get('/getAllUserReviews',fetchuser, async (req, res) => {
+router.get('/getAllUserReviews', fetchuser, async (req, res) => {
     try {
         console.log("i am here")
         const reviews = await Review.find();
@@ -37,7 +37,7 @@ router.get('/getAllUserReviews',fetchuser, async (req, res) => {
 })
 
 // Getting Users Reviews details
-router.get('/getAllUserEnquiry',fetchuser, async (req, res) => {
+router.get('/getAllUserEnquiry', fetchuser, async (req, res) => {
     try {
         console.log("i am here")
         const enquiry = await Enquiry.find();
@@ -53,33 +53,76 @@ router.get('/getAllUserEnquiry',fetchuser, async (req, res) => {
 
 // DELETING ----------------------------------------------------------------------------------
 
+//Deleting User
 router.delete('/admin/delete_user/:id', async (req, res) => {
     try {
-      const userId = req.params.id;
-      const user = await User.findById(userId);
-  
-      if (!user) {
-        return res.status(404).json({ message: 'User not found' });
-      }
-  
-      await User.findByIdAndDelete(userId);
-      res.status(200).json({ message: 'User deleted successfully', user });
+        const userId = req.params.id;
+        const user = await User.findById(userId);
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        await User.findByIdAndDelete(userId);
+        res.status(200).json({ message: 'User deleted successfully', user });
     } catch (error) {
-      console.error('Error deleting user:', error);
-      res.status(401).json({ error: 'Server Error' });
+        console.error('Error deleting user:', error);
+        res.status(401).json({ error: 'Server Error' });
     }
-  });
+});
+
+//Deleting Enquiry
+router.delete('/admin/delete_enquiry/:id', async(req, res) =>{
+    try {
+        const enquiryId = req.params.id;
+        const enquiry = await Enquiry.findById(enquiryId);
+
+        if(!enquiry){
+            return res.status(401).json({error:"Enquiry not found"});
+        }
+
+        await Enquiry.findByIdAndDelete(enquiryId)
+        res.status(200).json({message:"Enquiry deleted successfully"});
+    } catch (error) {
+        res.status(500).json({error: 'Server error'});
+    }
+})
 
 // UPDATING -----------------------------------------------------------------------------------
 
-// router.get('/admin/get_user/:id', async (req, res)=>{
-//     try {
-//         const userId = req.params.id;
-//         const user = await User.findOne(userId);
-//     } catch (error) {
-//         console.error('Error fetching single user:', error);
-//         res.status(401).json({ error: 'Server Error' });
-//     }
-// })
+//getting single user detail for edit.
+router.get('/admin/:id', async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const user = await User.findById(userId).select("-password");
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        // await User.findByIdAndUpdate(userId);
+        res.status(200).json({ message: 'User successfully fetched', user });
+    } catch (error) {
+        console.error('Error fetching single user:', error);
+        res.status(401).json({ error: 'Server Error' });
+    }
+})
+
+//Updating the user data 
+router.patch('/admin/update_user/:id', async (req, res) => {
+    try {
+        console.log("i am update")
+        const userId = req.params.id;
+        const updateUserData = req.body;
+        const updatedData = await User.findOneAndUpdate(
+            { _id: userId },
+            { $set: updateUserData },
+            { new: true }
+        )
+
+        res.status(200).json({ message: "updated Successfully in the server", updatedData })
+    } catch (error) {
+        res.status(500).json({ error: "didnt update in the server" })
+    }
+})
 
 module.exports = router;
