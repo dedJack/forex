@@ -25,10 +25,10 @@ const Home = () => {
       <AddReview />
       <div className="container ">
         <div className="row">          
-          {reviews.map((review) => {
+          {reviews.map((review, index) => {
             return (
               <div className="col-md-3 m-2 p-2 rounded"
-                key={review._id}
+                key={index}
                 style={{
                   width: "16.5rem",
                   backgroundColor: "lavender",

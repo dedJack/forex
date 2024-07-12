@@ -60,7 +60,6 @@ const NoteState = (props) => {
   //Review Controller
 
   const reviewsInitial = []
-
   //getAllReview 
   const getReview = async () => {
     //API call

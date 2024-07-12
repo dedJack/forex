@@ -69,8 +69,8 @@ const Enroll = () => {
           <div className="modal-dialog">
             <div className="modal-content bg-secondary">
               <div className="modal-header ">
-                <h1 className="modal-title fs-2 " id="exampleModalLabel">Enquiry Forum</h1>
-                <button type="button " className="btn-close fs-4" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h1 className="modal-title fs-3 " id="exampleModalLabel">Enquiry Forum</h1>
+                <button type="button " className="btn-close fs-5" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div className="modal-body ">
                 <form >

@@ -24,7 +24,7 @@ router.get('/getAllUserDetails', fetchuser, fetchadmin, async (req, res) => {
 // Getting Users Enquiry details
 router.get('/getAllUserReviews', fetchuser, async (req, res) => {
     try {
-        console.log("i am here")
+        // console.log("i am here")
         const reviews = await Review.find();
         if (!reviews || reviews === 0) {
             return res.status(401).json({ error: "Review not find..." });
@@ -85,6 +85,24 @@ router.delete('/admin/delete_enquiry/:id', async (req, res) => {
     } catch (error) {
         console.error('Error deleting enquiry:', error);
         res.status(500).json({ error: 'Server error' });
+    }
+})
+
+//Deleting Review
+router.delete('/admin/delete_review/:id', async(req,res)=>{
+    try {
+        const reviewId = req.params.id;
+        const review = await Review.findById(reviewId);
+
+        if(!review){
+            return res.status(401).json({error: "Review not found"});
+        }
+
+        await Review.findByIdAndDelete(reviewId);
+        res.status(200).json({message: "Review deleted successfully"})
+    } catch (error) {
+        console.error('Error deleting Review:', error);
+        res.status(500).json({error :"server error"});
     }
 })
 

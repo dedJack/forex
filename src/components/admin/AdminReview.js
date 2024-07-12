@@ -1,4 +1,5 @@
 import React, { useEffect, useState} from 'react'
+import { toast } from 'react-toastify';
 
 const AdminReview = () => {
 
@@ -11,7 +12,8 @@ const AdminReview = () => {
       const data = await fetch("/getAllUserReviews", {
         method: "GET",
         headers: {
-          "auth-token": token
+          "auth-token": token,
+          "Content-Type": "application/json"
         },
       });
       const response = await data.json();
@@ -25,6 +27,31 @@ const AdminReview = () => {
   useEffect(() => {
     getAllReview();
   }, []);
+
+  //Delete Review from the database
+  const deleteReview = async(id) =>{
+    try {
+      console.log("review is getting deleted ")
+      let token = localStorage.getItem("userDataToken")
+      const response = await fetch(`/admin/delete_review/${id}`,{
+        method:"DELETE",
+        headers:{
+          "auth-token": token,
+          "Content-Type": "application/json"
+        }
+      })
+      if( response.ok){
+        const data = await response.json();
+        console.log(data);
+        getAllReview();
+        toast.success("Review deleted Successfully")
+      } else {
+        toast.error("Enquiry not deleted")
+      }
+    } catch (error) {
+      console.log("Not deleted" ,error);
+    }
+  }
   return (
     <>
     <section className='container'>
@@ -48,7 +75,8 @@ const AdminReview = () => {
                   <td>{review.email}</td>
                   <td className='notes'>{review.notes}</td>
                   <td> <button className="admin-btn ">Edit</button>  </td>
-                  <td> <button className="admin-btn ">Delete</button>  </td>
+                  <td> <button className="admin-btn " onClick={() => { deleteReview(review._id) }} >Delete</button></td>
+
                 </tr>
               )
             })}

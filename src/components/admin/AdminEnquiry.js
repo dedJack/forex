@@ -31,7 +31,6 @@ const AdminEnquiry = () => {
   }, []);
 
   // to delete enquiry from database
-
   const deleteEnquiry = async (id) => {
 
     try {

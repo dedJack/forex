@@ -43,7 +43,6 @@ const AdminUpdate = () => {
     }
 
     // To Update user data
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {

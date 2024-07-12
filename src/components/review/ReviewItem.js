@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import noteContext from '../../context/noteContext'
 
-const ReviewItem = (props) => {
+const ReviewItem = () => {
 
     const context = useContext(noteContext);
     const { reviews} = context;
@@ -9,10 +9,10 @@ const ReviewItem = (props) => {
         <div>
         <div className="container" >
         <div className="col">
-            {reviews.map((review) => {
+            {reviews.map((review, index) => {
                 return (
                     <div className="col m-2 p-2 rounded"
-                    key={review._id}
+                    key={index}
                         style={{
                             backgroundColor: "lavender",
                         }}>
