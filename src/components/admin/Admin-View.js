@@ -23,7 +23,7 @@ const AdminView = () => {
       });
       if(response.ok){
         const data = await response.json();
-        // console.log(data.enquiry);
+        console.log(data.enquiry);
         setEnquiryData(data.enquiry)
       }
     } catch (error) {

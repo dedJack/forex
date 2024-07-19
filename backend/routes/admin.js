@@ -24,7 +24,6 @@ router.get('/getAllUserDetails', fetchuser, fetchadmin, async (req, res) => {
 // Getting Users Enquiry details
 router.get('/getAllUserReviews', fetchuser, async (req, res) => {
     try {
-        // console.log("i am here")
         const reviews = await Review.find();
         if (!reviews || reviews === 0) {
             return res.status(401).json({ error: "Review not find..." });
@@ -124,7 +123,7 @@ router.get('/admin/:id', async (req, res) => {
     }
 })
 
-//Updating the user data 
+// Updating the user data 
 router.patch('/admin/update_user/:id', async (req, res) => {
     try {
         console.log("i am update")
@@ -142,7 +141,7 @@ router.patch('/admin/update_user/:id', async (req, res) => {
     }
 })
 
-//2. getting single user Enquiry for view.
+//2. Getting single user Enquiry for view.
 
 router.get('/admin/AdminEnquiry/:id', async (req, res) => {
     try {
