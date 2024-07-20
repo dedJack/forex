@@ -1,18 +1,19 @@
-body{
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: blanchedalmond;
+    background-color: white;
 }
 
-.image img{
+.image img {
     width: 100%;
-    height:600px;
+    height: 700px;
     /* position: relative;  */
     /* top: 120px; */
 
 }
-.quote{
+
+.quote {
     color: beige;
     font-size: 20px;
     position: absolute;
@@ -26,14 +27,14 @@ h2:hover {
 
 /* Enroll css */
 
-.enroll{
+.enroll {
     /* text-align: center; */
     font-size: 2rem;
     background-color: lightgray;
-    
-        display: flex;
-        justify-content: center; 
-        align-items: center;  
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -41,15 +42,17 @@ h2:hover {
     margin: 7px;
 }
 
-.modal-title{
+.modal-title {
     margin: 0 108px;
     text-decoration: underline;
     font-weight: bold;
 }
-.modal-body{
+
+.modal-body {
     font-size: 1.2rem;
 }
-.modal-content{
+
+.modal-content {
     font-weight: bold;
 }
 
@@ -57,14 +60,81 @@ h2:hover {
     padding-top: 11px;
 }
 
-.info{
+.info {
     font-size: 33px;
-    text-align: center;
     background-color: bisque;
 }
 
+/* Review form */
+.reviewForm {
+    width: 50%;
+    float: left;
+
+}
+
+.reviewCard {
+    float: left;
+}
+.cards{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* Contact form details  */
+.contactForm {
+    width: 50%;
+    float: left;
+    margin: 40px 0;
+}
+
+.contactForm div input {
+    width: 100%;
+    outline: none;
+    border-radius: 0px;
+    border: none;
+    border-bottom: 2px solid black;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.contactForm div button {
+    width: 100%;
+    background-color: black;
+    color: white;
+    height: 4rem;
+    border-radius: 0px;
+    border: none;
+    border-bottom: 2px solid black;
+    /* margin-bottom: 30px; */
+    font-size: 20px;
+    text-align: justify;
+}
+
+.detailFrom {
+    width: 40%;
+    float: right;
+    margin: 47px 15px;
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.detailFrom p {
+    font-size: medium;
+}
+
+.detailFrom .companyEmail {
+    color: black;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.disclaimer {
+    clear: both;
+    font-size: 0.8rem;
+    text-align: justify;
+}
+
 /* login & signup css */
-.signForm{
+.signForm {
     background-color: black;
     width: 80%;
     top: 20px;
@@ -74,31 +144,35 @@ h2:hover {
     position: relative;
     display: flex;
 }
-.image-controller{
+
+.image-controller {
     width: 50%;
     height: 100%;
 }
 
-.main-title{
+.main-title {
     padding: 0.5rem 0;
     text-decoration: underline;
 }
-.myInfo{
+
+.myInfo {
     width: 40%;
     margin: auto;
 }
-.myInfo input{
+
+.myInfo input {
     background-color: rgb(214, 197, 197);
     border: none;
 }
 
-.signupBtn{
+.signupBtn {
     border-radius: 10px;
     background-color: rgb(42, 1, 80);
     border: none;
     box-shadow: 1px 1px 5px rgb(42, 1, 80);
 }
-.benefit h1{
+
+.benefit h1 {
     text-decoration: underline;
     text-decoration-color: blueviolet;
     font-size: 3rem;
@@ -106,7 +180,7 @@ h2:hover {
 
 /* Admin Panel css */
 
-.title{
+.title {
     text-align: center;
     margin: 1rem;
     border: 2px solid black;
@@ -115,20 +189,22 @@ h2:hover {
     background-color: transparent;
 }
 
-.menu-items{
+.menu-items {
     list-style: none;
 }
-.items{
+
+.items {
     text-decoration: none;
     color: black;
 }
 
 
 /* ADMIN Table */
-.adminTitle{
+.adminTitle {
     text-decoration: underline;
 }
-.table-content{
+
+.table-content {
     border-collapse: collapse;
     font-size: 1.2rem;
     padding: 7px;
@@ -141,73 +217,102 @@ h2:hover {
     cursor: pointer;
     width: 90%;
 }
-.table-content thead tr{
+
+.table-content thead tr {
     background-color: darkcyan;
     color: whitesmoke;
-    font-size: 1.4rem; 
+    font-size: 1.4rem;
     text-decoration: underline;
 }
+
 .table-content th,
-.table-content td{
+.table-content td {
     padding: 10px 12px;
 }
-.table-content tbody tr{
+
+.table-content tbody tr {
     border-bottom: 1px solid grey;
 }
-.table-content tbody tr:nth-child(even){
+
+.table-content tbody tr:nth-child(even) {
     background-color: beige;
     color: darkcyan;
 }
-.table-content tbody tr:last-child{
+
+.table-content tbody tr:last-child {
     border-bottom: 3px solid darkcyan;
 
 }
-.notes{
+
+.notes {
     text-align: left;
 }
-.admin-btn{
+
+.admin-btn {
     width: 100%;
     border-radius: 15px;
     background-color: rgb(173, 212, 236);
     border: none;
     box-shadow: 1px 1px 4px rgb(48, 30, 65);
 }
-.admin-btn:hover{
+
+.admin-btn:hover {
     background-color: rgb(93, 178, 231);
 }
-.UpdateForm{
+
+.UpdateForm {
     width: 40%;
     border: 1px solid black;
     border-radius: 1.2rem;
     font-weight: bold;
     font-size: 1.3rem;
     padding: 1.5rem;
-    margin:  1rem auto;
+    margin: 1rem auto;
     box-shadow: 1px 0 5px black;
 }
 
 /* Responsive */
 
 @media (max-width: 1160px) {
-    .signForm{
+    .signForm {
         display: flex;
-        flex-direction: column;    
+        flex-direction: column;
     }
-    .image-controller{
+
+    .image-controller {
         margin: auto;
     }
-    .image-controller img{
+
+    .image-controller img {
         width: 100%;
         height: 100%;
     }
-  }
+}
 
-@media (max-width:750px) {
-    .myInfo{
+@media (max-width:780px) {
+
+    /* enroll */
+    .myInfo {
         width: 65%;
         font-size: .8rem;
-    } 
-    .enroll{
+    }
+
+    .enroll {
         font-size: 1rem;
     }
- }
+
+    /* review Card */
+    .reviewCard{
+        margin: 30px 58px;
+    }
+    /* contact from */
+    .contactForm {
+        width: 100%;
+        margin: 10px 0 30px 0;
+    }
+
+    .detailFrom {
+        width: 100%;
+        margin: 0 0 30px 0;
+    }
+}
