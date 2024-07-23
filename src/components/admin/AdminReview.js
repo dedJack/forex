@@ -64,7 +64,6 @@ const AdminReview = () => {
             <tr>
               <th>Email</th>
               <th>Reviews</th>
-              <th>Update</th>
               <th>Delete</th>
             </tr>
           </thead>
@@ -74,7 +73,6 @@ const AdminReview = () => {
                 <tr key={index}>
                   <td>{review.email}</td>
                   <td className='notes'>{review.notes}</td>
-                  {/* <td> <button className="admin-btn "><Link to={`/admin/AdminReview/${review._id}/edit`}>Edit</Link></button>  </td> */}
                   <td> <button className="admin-btn " onClick={() => { deleteReview(review._id) }} >Delete</button></td>
                 </tr>
               )

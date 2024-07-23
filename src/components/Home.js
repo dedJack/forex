@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Enroll from "./Enroll";
 import AddReview from './review/AddReview';
 import noteContext from '../context/noteContext'
@@ -9,8 +9,12 @@ const Home = () => {
 
   const context = useContext(noteContext);
   const { reviews } = context;
-
+  const [isExpanded, setIsExpanded] = useState(false);
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
   return (
+
     <div >
       <div className="image">
         <img src={require('./images//warren_buffet.webp')} alt="" />
@@ -33,13 +37,19 @@ const Home = () => {
                   width: "17.5rem",
                   backgroundColor: "lavender",
                 }}>
-                <div className="p-2 rounded" style={{ height: "13rem" }}>
+                <div className="p-2 rounded" >
                   <div className="card-body" >
+
                     <div className="d-flex">
                       <p className="card-text ">{review.email}</p>
                     </div>
                     <p className="card-text m-0"><small className="text-body-secondary">27 May 2024</small></p>
-                    <p className="card-text m-1"  >{review.notes.length > 150 ? review.notes.slice(0,150)+"..." : review.notes }<br/> </p>
+                    <p className="card-text m-1">{isExpanded ? review.notes : review.notes.length > 150 ? review.notes.slice(0, 150) + "..." : review.notes}<br /> </p>
+                    {review.notes.length > 150 && (
+                      <button onClick={toggleExpand} style={{ background: 'none', border: 'none', color: 'blue', cursor: 'pointer', padding: 0 }}>
+                        {isExpanded ? 'Read Less' : 'Read More'}
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

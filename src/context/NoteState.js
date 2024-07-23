@@ -6,20 +6,30 @@ const NoteState = (props) => {
   //User Authentication
 
   const [user, setUser] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   const DashboardValid = async () => {
     try {
       //token get from localstorage which is stored. reference-- 'login.js'
+      setIsLoading(true);
       let token = localStorage.getItem("userDataToken");
-      const data = await fetch("/getUser", {
+      const response = await fetch("/getUser", {
         method: "GET",
         headers: {
           "auth-token": token
         }
       });
-      const response = await data.json();
-      // console.log(response.user);
-      setUser(response.user);
+
+      if(response.ok){
+        const data = await response.json();
+        // console.log(response.user);
+        setUser(data.user);
+        setIsLoading(false);
+      }
+      else{
+        setIsLoading(false);
+        console.log("Error fetching users ")
+      }
     } 
      catch (error) {
       console.log("Error fetching users " + error)
@@ -47,9 +57,11 @@ const NoteState = (props) => {
       });
       const response = await data.json();
       console.log(response);
-      if (response.status !== 200) {
+      if (response.status === 200) {
         localStorage.removeItem("userDataToken")
         setUser(false);
+      }else{
+        console.log("Logged out Unsuccessfull")
       }
     } catch (error) {
       console.log(error)
@@ -97,7 +109,7 @@ const NoteState = (props) => {
 
   const [reviews, setReviews] = useState(reviewsInitial)
   return (
-    <NoteContext.Provider value={{ user,DashboardValid, setUser, reviews, addReview, getReview, logoutUser }}>
+    <NoteContext.Provider value={{ user, DashboardValid, setUser, reviews, addReview, getReview, logoutUser, isLoading }}>
       {props.children}
     </NoteContext.Provider>
   )

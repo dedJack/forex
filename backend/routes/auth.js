@@ -97,11 +97,11 @@ router.get("/logoutUser",fetchuser,async(req,res)=>{
         });
 
         res.clearCookie("usercookie",{path:'/'});
-        req.rootUser.save();
+        await req.rootUser.save();
 
-        res.status(200).json({status:200,error});
+        res.status(200).json({status:200,message:'susseccfully logOut'});
     } catch (error) {
-        res.status(401).json({status: 401, error:"not logged out"});
+        res.status(500).json({status: 500, error:"not logged out"});
     }
 })
 

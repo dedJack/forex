@@ -1,11 +1,25 @@
 import React from 'react'
-import { NavLink, Outlet } from 'react-router-dom'
+import { Navigate, NavLink, Outlet } from 'react-router-dom'
 import { FaUsers} from "react-icons/fa";
 import { SiFormspree } from "react-icons/si";
 import { MdReviews } from "react-icons/md";
 import { HiMiniHome } from "react-icons/hi2";
+import noteContext from '../../context/noteContext';
+import { useContext } from 'react';
 
 const AdminLayout = () => {
+
+    const context = useContext(noteContext);
+    const {user, isLoading} = context;
+
+    if(isLoading){
+        return <h1>Loading...</h1>
+    }
+
+    console.log("User data : ",user)
+    if(!user.isAdmin){
+        return <Navigate to='*' />
+    }
     return (
         <>
             <header className='panel'>
