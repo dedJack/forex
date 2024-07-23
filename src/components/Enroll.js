@@ -61,7 +61,7 @@ const Enroll = () => {
   return (
     <div>
       <div className='enroll my-2 '>
-        <button type="button" className="badge btn btn-primary" data-bs-toggle="modal" data-bs-target="#enquiryForm">
+        <button type="button" className="reviewBtn btn btn-primary" data-bs-toggle="modal" data-bs-target="#enquiryForm">
           Enroll
         </button><span > REGISTER FOR FREE 1-1 APPOINTMENT </span>
 
@@ -69,7 +69,7 @@ const Enroll = () => {
           <div className="modal-dialog">
             <div className="modal-content bg-secondary">
               <div className="modal-header ">
-                <h1 className="modal-title fs-3 " id="exampleModalLabel">Enquiry Forum</h1>
+                <h1 className="modal-title fs-3 " id="exampleModalLabel">Enrollment Form</h1>
                 <button type="button " className="btn-close fs-5" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div className="modal-body ">

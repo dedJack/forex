@@ -43,10 +43,10 @@ const Home = () => {
                     <div className="d-flex">
                       <p className="card-text ">{review.email}</p>
                     </div>
-                    <p className="card-text m-0"><small className="text-body-secondary">27 May 2024</small></p>
+                    <p className="card-text m-0"><small className="text-body-secondary">10 jul 2024</small></p>
                     <p className="card-text m-1">{isExpanded ? review.notes : review.notes.length > 150 ? review.notes.slice(0, 150) + "..." : review.notes}<br /> </p>
                     {review.notes.length > 150 && (
-                      <button onClick={toggleExpand} style={{ background: 'none', border: 'none', color: 'blue', cursor: 'pointer', padding: 0 }}>
+                      <button onClick={toggleExpand} style={{ background: 'none', border: 'none', color: 'blue', cursor: 'pointer', padding: '0 4px' }}>
                         {isExpanded ? 'Read Less' : 'Read More'}
                       </button>
                     )}
@@ -56,14 +56,12 @@ const Home = () => {
             )
           }).slice(0, 4)
           }
-          {reviews.length >= 5 && <div className="col-md-3 m-2 p-2 rounded"
-            style={{
-              width: "16.5rem",
-              backgroundColor: "lavender",
-            }}>
+          {reviews.length >= 5 && <div className="moreLinks col-md-3 m-2 p-2 rounded">            
             <div className=" rounded" style={{ height: "9rem", display: "flex", alignItems: 'center' }}>
               <div className="card-body fs-2 text-center" >
-                <Link to="/ReviewItem" >See more</Link>
+                <Link to="/ReviewItem" style={{textDecoration: 'none', color:'black'}} >See more
+                <p className='disclaimer text-center'>Tap to see more reviews</p>
+                </Link>
               </div>
             </div>
           </div>}
