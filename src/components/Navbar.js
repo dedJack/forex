@@ -14,7 +14,7 @@ const Navbar = () => {
   }, [location]);
   return (
     <div>
-      <nav className="navbar navbar-expand-lg fs-4 navbar-dark bg-dark">
+      <nav className="navbar fixed-top navbar-expand-lg fs-4 navbar-dark bg-dark">
         <div className="container-fluid">
           <Link className="navbar-brand fs-4 " to="/">FOREX</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

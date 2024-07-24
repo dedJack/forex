@@ -20,7 +20,7 @@ const AdminLayout = () => {
         return <h1>Loading...</h1>
     }
 
-    console.log("User data : ", user)
+    // console.log("User data : ", user)
     if (!user.isAdmin) {
         return <Navigate to='*' />
     }

@@ -87,13 +87,13 @@ const NoteState = (props) => {
   }
 
   //addReview
-  const addReview = async (email, notes) => {
+  const addReview = async (email, notes,createdAt) => {
     //API call
     const response = await fetch('/addReview', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
-      }, body: JSON.stringify({ email, notes })
+      }, body: JSON.stringify({ email, notes,createdAt })
     });
 
     const data = await response.json();
@@ -102,6 +102,7 @@ const NoteState = (props) => {
     const review = {
       "email": email,
       "notes": notes,
+      "createdAt":createdAt,
       "__v": 0
     };
     setReviews(reviews.concat(review));

@@ -16,14 +16,14 @@ router.post('/addReview', [
 ], async (req, res) => {
 
     try {
-        const { email, notes } = req.body;
+        const { email, notes,createdAt } = req.body;
         const error = validationResult(req);
 
         //If there is error then return bad request.
         if (!error.isEmpty()) {
             return res.status(400).json({ errors: error.array() });
         }
-        const review = new Review({email, notes });
+        const review = new Review({email, notes, createdAt });
         const savedNotes = review.save();
         res.status(200).json({status:200, savedNotes})
     } catch (error) {

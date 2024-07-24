@@ -10,6 +10,10 @@ const ReviewSchema = new Schema({
     notes:{
         type: String,
         required: true
+    },
+    createdAt:{
+        type: Date,
+        default: new Date().getTime()
     }
 
 })

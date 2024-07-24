@@ -23,54 +23,59 @@ const Home = () => {
       <div>
         <Enroll />
       </div>
-      <div className="container">
-        <h2 className='text-center text-decoration-underline'>YOUR REVIEWS</h2>
-      </div>
-      <AddReview />
-      <div className="reviewCard ">
-        <div className="row m-2">
-          {reviews.map((review, index) => {
-            return (
-              <div className="col-md-3 m-2 p-2 rounded"
-                key={index}
-                style={{
-                  width: "17.5rem",
-                  backgroundColor: "lavender",
-                }}>
-                <div className="p-2 rounded" >
-                  <div className="card-body" >
+      <section className='section'>
+        <main>
+          <div className="container">
+            <h2 className='text-center text-decoration-underline'>YOUR REVIEWS</h2>
+          </div>
+          <AddReview />
+          <div className="reviewCard ">
+            <div className="row m-2">
+              {reviews.map((review, index) => {
+                return (
+                  <div className="col-md-3 m-2 p-2 rounded"
+                    key={index}
+                    style={{
+                      width: "17.5rem",
+                      backgroundColor: "lavender",
+                    }}>
+                    <div className="p-2 rounded" >
+                      <div className="card-body" >
 
-                    <div className="d-flex">
-                      <p className="card-text ">{review.email}</p>
+                        <div className="d-flex">
+                          <p className="card-text ">{review.email}</p>
+                        </div>
+                        <p className="card-text m-0"><small className="text-body-secondary">{review.createdAt}</small></p>
+                        <p className="card-text m-1">{isExpanded ? review.notes : review.notes.length > 150 ? review.notes.slice(0, 150) + "..." : review.notes}<br /> </p>
+                        {review.notes.length > 150 && (
+                          <button onClick={toggleExpand} style={{ background: 'none', border: 'none', color: 'blue', cursor: 'pointer', padding: '0 4px' }}>
+                            {isExpanded ? 'Read Less' : 'Read More'}
+                          </button>
+                        )}
+                      </div>
                     </div>
-                    <p className="card-text m-0"><small className="text-body-secondary">10 jul 2024</small></p>
-                    <p className="card-text m-1">{isExpanded ? review.notes : review.notes.length > 150 ? review.notes.slice(0, 150) + "..." : review.notes}<br /> </p>
-                    {review.notes.length > 150 && (
-                      <button onClick={toggleExpand} style={{ background: 'none', border: 'none', color: 'blue', cursor: 'pointer', padding: '0 4px' }}>
-                        {isExpanded ? 'Read Less' : 'Read More'}
-                      </button>
-                    )}
+                  </div>
+                )
+              }).slice(0, 4)
+              }
+              {reviews.length >= 5 && <div className="moreLinks col-md-3 m-2 p-2 rounded">
+                <div className=" rounded" style={{ height: "9rem", display: "flex", alignItems: 'center' }}>
+                  <div className="card-body fs-2 text-center" >
+                    <Link to="/ReviewItem" style={{ textDecoration: 'none', color: 'black' }} >See more
+                      <p className='disclaimer text-center'>Tap to see more reviews</p>
+                    </Link>
                   </div>
                 </div>
-              </div>
-            )
-          }).slice(0, 4)
-          }
-          {reviews.length >= 5 && <div className="moreLinks col-md-3 m-2 p-2 rounded">            
-            <div className=" rounded" style={{ height: "9rem", display: "flex", alignItems: 'center' }}>
-              <div className="card-body fs-2 text-center" >
-                <Link to="/ReviewItem" style={{textDecoration: 'none', color:'black'}} >See more
-                <p className='disclaimer text-center'>Tap to see more reviews</p>
-                </Link>
-              </div>
+              </div>}
             </div>
-          </div>}
-        </div>
-      </div>
-      <div className="image">
-        <img src={require('./images//warren_buffet.webp')} alt="" />
-      </div>
-      <section>
+          </div>
+        </main>
+      </section>
+
+      <picture className="image">
+        <img src={require('./images//warren_buffet.webp')} alt="" style={{marginTop: "10px"}}/>
+      </picture>
+      <section className='section'>
         <div className='bothContainer'>
           <h1 className='text-center mt-4 text-decoration-underline' >CONTACTS</h1>
           <div className='container' id='contacts'>

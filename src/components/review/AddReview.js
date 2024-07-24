@@ -3,7 +3,7 @@ import noteContext from '../../context/noteContext'
 
 const AddReview = () => {
   const context = useContext(noteContext);
-  const { user, addReview, getReview } = context;
+  const { user, addReview, getReview} = context;
 
   useEffect(() => {
     getReview();
@@ -14,7 +14,7 @@ const AddReview = () => {
   const [userData, setUserData] = useState(true);
 
   if (userData && user) {
-    setReview({ email: user.email, description: "" });
+    setReview({ email: user.email, description: "",createdAt:"" });
     setUserData(false);
   }
 
@@ -34,7 +34,7 @@ const AddReview = () => {
     }
     else {
       addReview(user.email, review.description)
-      setReview({ email: user.email, description: "" })
+      setReview({ email: user.email, description: ""})
     }
   }
 
