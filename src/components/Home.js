@@ -13,6 +13,15 @@ const Home = () => {
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
   };
+
+  //convert standard date and time to string 
+  const formatDate=(dateString)=>{
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2,'0');
+    const month = String(date.getMonth()+1).padStart(2,'0');
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  }
   return (
 
     <div >
@@ -45,7 +54,7 @@ const Home = () => {
                         <div className="d-flex">
                           <p className="card-text ">{review.email}</p>
                         </div>
-                        <p className="card-text m-0"><small className="text-body-secondary">{review.createdAt}</small></p>
+                        <p className="card-text m-0"><small className="text-body-secondary">{formatDate(review.createdAt)}</small></p>
                         <p className="card-text m-1">{isExpanded ? review.notes : review.notes.length > 150 ? review.notes.slice(0, 150) + "..." : review.notes}<br /> </p>
                         {review.notes.length > 150 && (
                           <button onClick={toggleExpand} style={{ background: 'none', border: 'none', color: 'blue', cursor: 'pointer', padding: '0 4px' }}>
