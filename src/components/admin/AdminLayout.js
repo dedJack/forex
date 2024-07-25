@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
-import { Navigate, NavLink, Outlet } from 'react-router-dom'
+import React, { useState, useContext } from 'react'
+import { Navigate, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { FaUsers } from "react-icons/fa";
 import { SiFormspree } from "react-icons/si";
 import { MdReviews } from "react-icons/md";
 import { HiMiniHome } from "react-icons/hi2";
 import noteContext from '../../context/noteContext';
-import { useContext } from 'react';
 
 const AdminLayout = () => {
     const [showInformation, setShowInformation] = useState(true);
@@ -13,6 +12,10 @@ const AdminLayout = () => {
     const handleListItemClick = () => {
       setShowInformation(false);
     };
+
+    //To specify the location where the information is shown
+    const location = useLocation();
+
     const context = useContext(noteContext);
     const { user, isLoading } = context;
 
@@ -60,7 +63,7 @@ const AdminLayout = () => {
                         </ul>
                     </nav>
                     
-                        <div className={`information ${showInformation ? '' : 'd-none'}`}>
+                        <div className={`information ${showInformation && location.pathname=='/Admin' ? '' : 'd-none'}`}>
                             Welcome to the Admin Panel.. <br /> We Offer You collections Of FOREX.
                         </div>
                     

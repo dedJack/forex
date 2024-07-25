@@ -3,7 +3,7 @@ const { Schema, default: mongoose } = require("mongoose");
 
 const ReviewSchema = new Schema({
 
-    email:{
+    name:{
         type: String,
         required: true
     },

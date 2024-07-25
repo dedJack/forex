@@ -10,31 +10,31 @@ const AddReview = () => {
     // eslint-disable-next-line
   }, []);
 
-  const [review, setReview] = useState({ email: "", description: "" });
+  const [review, setReview] = useState({ name: "", description: "" });
   const [userData, setUserData] = useState(true);
 
   if (userData && user) {
-    setReview({ email: user.email, description: "",createdAt:"" });
+    setReview({ name: user.name, description: "",createdAt:"" });
     setUserData(false);
   }
 
   //Checking the form before submitting
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { email, description } = review;
-    if (email === '') {
-      alert("Enter a valid email")
+    const { name, description } = review;
+    if (name === '') {
+      alert("Enter a valid name")
     }
-    else if (!email.includes("@")) {
-      alert("Enter a valid email")
+    else if (name.length<6) {
+      alert("Name must be atleast 6 characters")
     } else if (description === '') {
       alert("Description must be written")
     } else if (description.length < 5) {
       alert("Description must be alteast 5 characters.")
     }
     else {
-      addReview(user.email, review.description)
-      setReview({ email: user.email, description: ""})
+      addReview(user.name, review.description)
+      setReview({ name: user.name, description: ""})
     }
   }
 
@@ -48,8 +48,8 @@ const AddReview = () => {
       <div className=' reviewForm'>
         <form  onSubmit={handleSubmit} id='reviewCard' style={{ display: user ? "block" : "none" }} >
           <div className="mb-3">
-            <label htmlFor="email" className="form-label">Email address :</label>
-            <input type="email" disabled className="form-control" name="email" id="email" value={review.email} onChange={onChange} aria-describedby="emailHelp" />
+            <label htmlFor="name" className="form-label">Name :</label>
+            <input type="name" disabled className="form-control" name="text" id="name" value={review.name} onChange={onChange}  />
           </div>
           <div className="mb-3">
             <label htmlFor="description" className="form-label">Description :</label>

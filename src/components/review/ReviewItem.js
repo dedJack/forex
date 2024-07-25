@@ -16,21 +16,18 @@ const ReviewItem = () => {
     return (
         <div>
         <div className="container" >
-        <div className="col">
+        <div className="row m-2">
             {reviews.map((review, index) => {
                 return (
-                    <div className="col m-2 p-2 rounded"
-                    key={index}
-                        style={{
-                            backgroundColor: "lavender",
-                        }}>
+                    <div className="cardItem col-md-3 m-2 p-2 rounded"
+                    key={index}>
                         <div className="p-2 rounded">
                             <div className="card-body" >
                                 <div className="d-flex">
-                                <p className="card-text fs-6 text-body-secondary">{review.email}</p>
+                                <p className="card-text ">{review.name}</p>
                                 </div>
-                                <p className="card-text m-0"><small className="text-body-secondary">{formatDate(review.createdAt)}</small></p>
-                                <p className="card-text" style={{ height: "50px" }} >{review.notes}</p>
+                                <p className="card-text m-0"><small className="reviewDate">{formatDate(review.createdAt)}</small></p>
+                                <p className="card-text"  >{review.notes}</p>
                             </div>
                         </div>
                     </div>

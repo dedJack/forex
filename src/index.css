@@ -3,12 +3,15 @@ body {
     padding: 0;
     box-sizing: border-box;
     background-color: white;
+    position: relative;
+    top: 3.5rem;
+
 }
 
 .image img {
     width: 100%;
     height: 700px;
-    margin-top: 65px;
+    /* margin-top: 65px; */
 }
 
 .quote {
@@ -71,11 +74,23 @@ h2:hover {
 }
 .reviewCard {
     float: left;
-    /* position: absolute; */
 }
-.cards {
-    overflow: hidden;
-    text-overflow: ellipsis;
+.cardItem{
+    background-color: lavender;
+    width: 17.5rem;
+    min-height: 15rem;
+    transition: transform 0.3s ease-in-out;  /* For the transition effect */
+}
+.cardItem:nth-child(even){
+    background-color: rgb(67, 65, 65);
+    color: whitesmoke;
+}
+.reviewDate{
+    font-size: 0.8rem;
+    color: darkgrey;
+}
+.cardItem:hover {
+    transform: scale(1.03);  /* Increase the size of the card on hover */
 }
 .moreLinks {
     display: flex;
@@ -209,16 +224,26 @@ h2:hover {
 
 /* ADMIN Table */
 .layout{
-    display: flex;
-    position: absolute;
-    margin-top: 5rem;
+    display: inline-block;
+    position: relative;
+    padding: 5rem 1rem;
+    margin-left: 1rem;
+    width: 20%;
 }
 .users-info{
     margin: 35px 96px;
 }
-
+.tablesInfo{
+    width: 100%;
+    display: inline-block;
+    top: 5rem;
+    position: fixed;
+    right: 13px;
+    top: 10rem;
+}
 .adminTitle {
     text-decoration: underline;
+    width: 115%;
 }
 .information{
     margin: auto;
@@ -235,7 +260,7 @@ h2:hover {
     box-shadow: 1px 1px 5px black;
     font-weight: 200;
     cursor: pointer;
-    width: 90%;
+    width: 80%;
 }
 
 .table-content thead tr {

@@ -21,6 +21,7 @@ import AdminReview from './components/admin/AdminReview';
 import AdminEnquiry from './components/admin/AdminEnquiry';
 import AdminUpdate from "./components/admin/Admin-Update";
 import AdminView from './components/admin/Admin-View';
+import Contacts from './components/Contacts';
 
 function App() {
   return (
@@ -57,7 +58,7 @@ function App() {
                 <Route path="AdminUsers/:id/edit" element ={<AdminUpdate/>} />
                 <Route path="AdminEnquiry/:id/view" element ={<AdminView/>} />
               </Route>
-
+              <Route path='/Contacts' element={<Contacts />}/>
             </Routes>
           </div>
         </Router>

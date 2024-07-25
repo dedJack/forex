@@ -87,20 +87,20 @@ const NoteState = (props) => {
   }
 
   //addReview
-  const addReview = async (email, notes,createdAt) => {
+  const addReview = async (name, notes,createdAt) => {
     //API call
     const response = await fetch('/addReview', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
-      }, body: JSON.stringify({ email, notes,createdAt })
+      }, body: JSON.stringify({ name, notes,createdAt })
     });
 
     const data = await response.json();
     console.log(data);
     console.log("Adding a new note");
     const review = {
-      "email": email,
+      "name": name,
       "notes": notes,
       "createdAt":createdAt,
       "__v": 0

@@ -67,7 +67,7 @@ const Benifits = () => {
   ]
   return (
     <div className=" benefit container">
-      <h1 className='text-center my-3 mx-3'>BENEFITS</h1>
+      <h1 className='text-center  mx-3'>BENEFITS</h1>
       <div className="row row-cols-3 my-2 mx-2">
         {benefits.map((benefits) => {
           return (

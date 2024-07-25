@@ -54,7 +54,7 @@ const AdminReview = () => {
   }
   return (
     <>
-    <section className='container'>
+    <section className='tablesInfo container'>
       <div className='adminTitle text-center'>
         <h2>Reviews Details</h2>
       </div>
@@ -71,7 +71,7 @@ const AdminReview = () => {
             {review.map((review, index) => {
               return (
                 <tr key={index}>
-                  <td>{review.email}</td>
+                  <td>{review.name}</td>
                   <td className='notes'>{review.notes}</td>
                   <td> <button className="admin-btn " onClick={() => { deleteReview(review._id) }} >Delete</button></td>
                 </tr>

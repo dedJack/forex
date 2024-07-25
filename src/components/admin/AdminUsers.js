@@ -58,7 +58,7 @@ const AdminUsers = () => {
 
   return (
     <>
-      <section className='container'>
+      <section className='tablesInfo container'>
         <div className='adminTitle text-center'>
           <h2>Users Details</h2>
         </div>
