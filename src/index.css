@@ -4,6 +4,7 @@ body {
     box-sizing: border-box;
     background-color: white;
     position: relative;
+    font-family: 'Playfair Display';
     top: 3.5rem;
 
 }
@@ -15,26 +16,26 @@ body {
 }
 
 .quote {
-    color: beige;
-    font-size: 20px;
     position: absolute;
+    color: beige;
+    text-align: center;
+    font-size: 20px;
     top: 250px;
     left: 6rem;
 }
 
 h2:hover {
-    cursor: pointer;
+    cursor:default;
 }
 
-.section{
+.section {
     margin: 10px 0;
 }
+
 /* Enroll css */
 .enroll {
-    /* text-align: center; */
     font-size: 2rem;
     background-color: lightgray;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,36 +63,45 @@ h2:hover {
     font-size: 33px;
     background-color: bisque;
 }
+
 /* Review form */
 .reviewForm {
     width: 50%;
     float: left;
 }
+
 .reviewBtn {
     width: 6rem;
     background-color: #2d4777;
     margin-right: 7px;
 }
+
 .reviewCard {
     float: left;
 }
-.cardItem{
+
+.cardItem {
     background-color: lavender;
     width: 17.5rem;
     min-height: 15rem;
-    transition: transform 0.3s ease-in-out;  /* For the transition effect */
+    transition: transform 0.3s ease-in-out;
+    /* For the transition effect */
 }
-.cardItem:nth-child(even){
+
+.cardItem:hover {
+    transform: scale(1.03);
+    /* Increase the size of the card on hover */
+}
+.cardItem:nth-child(even) {
     background-color: rgb(67, 65, 65);
     color: whitesmoke;
 }
-.reviewDate{
+
+.reviewDate {
     font-size: 0.8rem;
     color: darkgrey;
 }
-.cardItem:hover {
-    transform: scale(1.03);  /* Increase the size of the card on hover */
-}
+
 .moreLinks {
     display: flex;
     align-items: center;
@@ -125,7 +135,6 @@ h2:hover {
     border-radius: 0px;
     border: none;
     border-bottom: 2px solid black;
-    /* margin-bottom: 30px; */
     font-size: 20px;
     text-align: justify;
 }
@@ -199,41 +208,69 @@ h2:hover {
     font-size: 3rem;
 }
 
-/* Admin Panel css */
+/* Admin Panel css --------------------------------------------------------------------*/
 
 .title {
     text-align: center;
-    margin: 1rem;
-    border: 2px solid black;
-    border-radius: 29px;
-    padding: 0.5rem;
-    background-color: transparent;
+    border-bottom: 2px solid black;
+    color: white;
+    background-color: #454562;
+    line-height: 6rem;
+    cursor: copy;
+}
+.layout{
+    display: flex;
+}
+
+/* Admins Navbar */
+.sideBar {
+    position: fixed;
+    width: 20%;
+    background-color: #00004f;
+    font-size: 1.5rem;
+    height: 100%;
+    border-right: 1px solid #9e1313;
 }
 
 .menu-items {
+    padding: 0;
     list-style: none;
 }
 
-.items {
-    text-decoration: none;
-    color: black;
-    border-bottom: 2px solid black;
-    margin: 4px 2px;
+.sideBar ul li {
+    border-bottom: 2px solid #353131;
 }
 
+.items {
+    display: block;
+    color: whitesmoke;
+    text-decoration: none;
+    line-height: 5rem;
+    padding-left: 1rem;
+    transition: .3s ;
+}
+.items:hover{
+    padding-left: 1.4rem;
+}
+.items:active{
+    color: bisque;
+}
+.information {
+    position: absolute;
+    left: 48%;
+    margin-top: 17rem;
+    height: 100%;
+    font-size: 2rem;
+    display: block;
+    text-align: center;
+}
 
 /* ADMIN Table */
-.layout{
-    display: inline-block;
-    position: relative;
-    padding: 5rem 1rem;
-    margin-left: 1rem;
-    width: 20%;
-}
-.users-info{
+.users-info {
     margin: 35px 96px;
 }
-.tablesInfo{
+
+.tablesInfo {
     width: 100%;
     display: inline-block;
     top: 5rem;
@@ -241,12 +278,11 @@ h2:hover {
     right: 13px;
     top: 10rem;
 }
+
 .adminTitle {
     text-decoration: underline;
     width: 115%;
-}
-.information{
-    margin: auto;
+    margin-top: 2rem;
 }
 
 .table-content {
@@ -304,19 +340,23 @@ h2:hover {
 .admin-btn:hover {
     background-color: rgb(93, 178, 231);
 }
-.links{
+
+.links {
     color: black;
     text-decoration: none;
 }
+
 .UpdateForm {
-    width: 40%;
+    width: 41%;
     border: 1px solid black;
     border-radius: 1.2rem;
     font-weight: bold;
     font-size: 1.3rem;
     padding: 1.5rem;
     margin: 1rem auto;
+    left: 38%;
     box-shadow: 1px 0 5px black;
+    position: absolute;
 }
 
 /* Responsive */

@@ -10,7 +10,7 @@ const AdminLayout = () => {
     const [showInformation, setShowInformation] = useState(true);
 
     const handleListItemClick = () => {
-      setShowInformation(false);
+        setShowInformation(false);
     };
 
     //To specify the location where the information is shown
@@ -28,47 +28,45 @@ const AdminLayout = () => {
         return <Navigate to='*' />
     }
 
-    
+
     return (
         <>
-            <header className='panel'>
-                <h2 className='title'>ADMIN PANEL</h2>
-                <div className="layout admin-grid container ">
-                    <nav className="menu nav flex-column fs-3">
-                        <ul className="menu-items">
-                            <li onClick={handleListItemClick}>
+            <div className='layout'>
+                <aside className='sideBar'>
+                    <header className='panel'>
+                        <h2 className='title'>ADMIN PANEL</h2>
+                    </header>
+                    <ul className="menu-items">
+                        <li onClick={handleListItemClick}>
+                            <NavLink className="items" to="/Admin/AdminUsers">
                                 <FaUsers className="mx-2 fs-5" />
-                                <NavLink className="items" to="/Admin/AdminUsers">
-                                    Users
-                                </NavLink>
-                            </li>
-                            <li onClick={handleListItemClick}>
+                                Users
+                            </NavLink>
+                        </li>
+                        <li onClick={handleListItemClick}>
+                            <NavLink className="items" to="/Admin/AdminReview">
                                 <MdReviews className="mx-2 fs-5" />
-                                <NavLink className="items" to="/Admin/AdminReview">
-                                    Reviews
-                                </NavLink>
-                            </li>
-                            <li onClick={handleListItemClick}>
+                                Reviews
+                            </NavLink>
+                        </li>
+                        <li onClick={handleListItemClick}>
+                            <NavLink className="items" to="/Admin/AdminEnquiry">
                                 <SiFormspree className="mx-2 fs-5" />
-                                <NavLink className="items" to="/Admin/AdminEnquiry">
-                                    Enquiry
-                                </NavLink>
-                            </li>
-                            <li onClick={handleListItemClick}>
+                                Enquiry
+                            </NavLink>
+                        </li>
+                        <li onClick={handleListItemClick}>
+                            <NavLink className="items" to="/">
                                 <HiMiniHome className="mx-2 fs-5" />
-                                <NavLink className="items" to="/">
-                                    Home
-                                </NavLink>
-                            </li>
-                        </ul>
-                    </nav>
-                    
-                        <div className={`information ${showInformation && location.pathname=='/Admin' ? '' : 'd-none'}`}>
-                            Welcome to the Admin Panel.. <br /> We Offer You collections Of FOREX.
-                        </div>
-                    
+                                Home
+                            </NavLink>
+                        </li>
+                    </ul>
+                </aside>
+                <div className={`information ${showInformation && location.pathname === '/Admin' ? '' : 'd-none'}`}>
+                    Welcome to the Admin Panel.. <br /> We Offer You collections Of FOREX.
                 </div>
-            </header>
+            </div>
             <Outlet />
         </>
     )
