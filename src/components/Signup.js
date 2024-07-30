@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import './Login'
 
 const Signup = () => {
 
@@ -89,7 +90,7 @@ const Signup = () => {
                   <button type="submit" className="signupBtn btn btn-primary " onClick={handleSubmit}> Submit</button>
                 </div>
               </form>
-              <div className="form-text text-white text-center">Already have an account. <a href='./Login'>Login</a></div>
+              <div className="form-text text-white text-center">Already have an account. <Link to='/Login'>Login</Link></div>
             </div>
           </div>
         </main>

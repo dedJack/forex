@@ -21,7 +21,7 @@ const Navbar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{margin: "auto"}}>
               <li className="nav-item">
                 <Link className={`nav-link ${location.pathname === '/' ? 'active' : ''}`} aria-current="page" to="/">Home</Link>
               </li>
@@ -35,37 +35,30 @@ const Navbar = () => {
                 <Link className={`nav-link ${location.pathname === '/Contacts' ? 'active' : ''}`} to="/Contacts">Contacts</Link>
               </li>
             </ul>
-            <form className="d-flex mx-3" >
 
-              <div className="btn-group">
-                <button type="button" className="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  Action
-                </button>
-                <ul className="dropdown-menu bg-secondary ">
-                  {
-                    user ? (
-                      <>
-                      <li>
-                        <Link className="dropdown-item text-white" to="/" onClick={logoutUser} >logout</Link>
-                      </li>
-                      </>
-                    ) : (
-                      <>
-                      <li>
-                        <Link className="dropdown-item text-white" to="/Login" >login</Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item text-white" to="/Signup" >signup</Link>
-                      </li>
-                      </>
-                    )
-                  }
-                </ul>
-              </div>
-
-            </form>
+            <ul className="nav-login ">
+              {
+                user ? (
+                  <>
+                    <li>
+                      <Link className="nav-link text-white" to="/" onClick={logoutUser} >logout</Link>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <Link className="nav-link text-white" to="/Login" >login</Link>
+                    </li>
+                    <li>
+                      <Link className="nav-link text-white" to="/Signup" >signup</Link>
+                    </li>
+                  </>
+                )
+              }
+            </ul>
           </div>
         </div>
+
       </nav>
     </div>
   )

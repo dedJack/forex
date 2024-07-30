@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react'
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import noteContext from "../context/noteContext"
+import noteContext from "../context/noteContext";
+import './Signup';
 
 const Login = () => {
 
@@ -87,6 +88,7 @@ const {DashboardValid} = context;
                   <button type="submit" className="signupBtn btn btn-primary m-2" onClick={handleSubmit}> Submit</button>
                 </div>
             </form>
+            <div className="form-text text-white text-center">Don't have an account. <Link to='/SignUp'>Sign up</Link></div>
           </div>
         </div>
       </section>
