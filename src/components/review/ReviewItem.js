@@ -15,7 +15,7 @@ const ReviewItem = () => {
     }
     return (
         <div>
-        <div className="container" >
+        <div className="reviewcontainer container" >
         <div className="row m-2">
             {reviews.map((review, index) => {
                 return (

@@ -355,7 +355,109 @@ h2:hover {
 
 /* Responsive */
 
-@media (max-width: 1160px) {
+@media (max-width : 350px) {
+  /* css styles for very small devices */
+
+  .reviewcontainer{
+    margin: 2px 1rem;
+  }
+  .cardItem{
+    min-height: 11rem;
+  }
+
+}
+
+@media (min-width : 351px) and (max-width: 480px) {
+  /* CSS styles for extra small devices */
+
+  .enroll {
+    font-size: 1rem;
+  }
+  .cardItem {
+    width: 21.5rem;
+    min-height: 10rem;
+  }
+  .reviewcontainer {
+    margin: 2px 1.2rem
+  }
+  .reviewCard {
+    margin: 0 1rem;
+  }
+  .moreLinks {
+    width: 21.5rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+/* CSS styles for small devices */
+
+  /* Navbar */
+  .nav-login {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0.7rem;
+    line-height: 2.3rem;
+  }
+
+  /* enroll */
+  .myInfo {
+    width: 65%;
+    font-size: 0.8rem;
+  }
+
+  .enroll {
+    font-size: 0.9rem;
+  }
+  .reviewBtn {
+    margin: 5px auto;
+  }
+  /* review form */
+  .reviewForm {
+    width: 100%;
+  }
+  /* review Card */
+  .reviewCard {
+    margin: 0px;
+  }
+  .cardItem {
+    width: 21.5rem;
+    min-height: 10rem;
+  }
+  .moreLinks {
+    width: 21.5rem;
+  }
+
+  /* contact from */
+  .contactForm {
+    width: 100%;
+    margin: 10px 0 30px 0;
+  }
+
+  .detailFrom {
+    width: 100%;
+    margin: 0 0 30px 0;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+   /* CSS styles for medium devices */
+
+  .cardItem {
+    width: 20rem;
+    min-height: 13rem;
+  }
+  .moreLinks{
+    width: 20rem;
+    min-height: 13rem;
+  }
+  .reviewcontainer{
+    margin: 1rem 2.5rem;
+  }
+}
+
+@media (min-width: 991px) and (max-width: 1200px) {
+  /* CSS styles for large devices */
+
   .signForm {
     display: flex;
     flex-direction: column;
@@ -371,43 +473,19 @@ h2:hover {
   }
 }
 
-@media (max-width: 780px) {
-  /* enroll */
-  .myInfo {
-    width: 65%;
-    font-size: 0.8rem;
-  }
+@media (min-width: 1201px) {
+  /* CSS styles for extra large devices */
 
-  .enroll {
-    font-size: 1rem;
+  .reviewcontainer{
+    margin: 1rem 3rem;
   }
-  .reviewBtn{
-    margin: auto;
-  }
-  /* review form */
-  .reviewForm {
-    width: 100%;
-  }
-  /* review Card */
-  .reviewCard {
-    margin: 30px 8px;
-  }
-  .cardItem {
-    width: 21.5rem;
-    min-height: 10rem;
+  .cardItem{
+    width: 18rem;
   }
   .moreLinks{
-    width: 21.5rem;
-  }
-
-  /* contact from */
-  .contactForm {
-    width: 100%;
-    margin: 10px 0 30px 0;
-  }
-
-  .detailFrom {
-    width: 100%;
-    margin: 0 0 30px 0;
+    width: 16rem;
   }
 }
+
+
+
