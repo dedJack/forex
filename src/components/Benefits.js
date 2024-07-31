@@ -72,10 +72,10 @@ const Benifits = () => {
         {benefits.map((benefits) => {
           return (
             <div className="col" key={benefits.a} >
-              <div className="card text-bg-dark mb-3 shadow mb-5 bg-body-dark rounded" >
+              <div className="benefitsCard card text-bg-dark mb-5 bg-body-dark rounded" >
                 <div className="card-body" >
-                  <h5 className="card-title align-middle" style={{ height: '75px', alignContent: 'center', textAlign: 'center' }} >
-                    <Link to={benefits.links} style={{ textDecoration: 'none', color: 'white' }} >{benefits.a}</Link> </h5>
+                  <h5 className="card-title align-middle" style={{ textAlign: 'center' }} >
+                    <Link to={benefits.links} className="links">{benefits.a}</Link> </h5>
                 </div>
               </div>
             </div>

@@ -82,7 +82,7 @@ const AdminEnquiry = () => {
                     <td>{enquiry.contactNumber}</td>
                     <td>{enquiry.email}</td>
                     <td>{enquiry.enquiry}</td>
-                    <td><button className="admin-btn" ><Link className='links' to={`/admin/AdminEnquiry/${enquiry._id}/view`}>View</Link></button> </td>
+                    <td><button className="admin-btn" ><Link className='Btn-links' to={`/admin/AdminEnquiry/${enquiry._id}/view`}>View</Link></button> </td>
                     <td> <button className="admin-btn " onClick={() => { deleteEnquiry(enquiry._id) }} >Delete</button></td>
                   </tr>
                 )
