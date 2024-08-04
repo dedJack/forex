@@ -215,7 +215,28 @@ h2:hover {
   text-decoration: underline;
   text-decoration-color: blueviolet;
   font-size: 3rem;
+
 }
+.modal-content{
+  top:15rem;
+}
+.modelbtn{
+  text-align: center;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease-in-out;
+
+}
+.modelbtn1{
+  background: none;
+  border: none;
+  
+}
+.benefitsCard:hover .modelbtn{
+  max-height: 2.5rem;
+  
+}
+
 
 /* Admin Panel css --------------------------------------------------------------------*/
 
